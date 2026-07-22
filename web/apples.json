@@ -1,6 +1,6 @@
 {
   "generated_by": "build.py",
-  "count": 46,
+  "count": 54,
   "apples": [
     {
       "id": "honeycrisp",
@@ -1093,6 +1093,193 @@
       "season": "Late Fall",
       "flavor_text": "A late-hanging sundown red that stores like a dream.",
       "notes": "A sibling of Pink Lady; hangs late on the tree and keeps well."
+    },
+    {
+      "id": "cameo",
+      "name": "Cameo",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Dryden, Washington",
+        "year": 1987
+      },
+      "parentage": "Chance seedling",
+      "skin": "#d24236",
+      "blush": "#9c2620",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A chance beauty streaked like a sunset, crisp and keepable.",
+      "notes": "A chance discovery in a Washington State orchard."
+    },
+    {
+      "id": "zestar",
+      "name": "Zestar!",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Minnesota",
+        "year": 1999
+      },
+      "parentage": "State Fair \u00d7 MN1691",
+      "skin": "#d84a44",
+      "blush": "#a02a26",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "An early-season zinger with a sweet-tart pop.",
+      "notes": "An early-ripening University of Minnesota apple."
+    },
+    {
+      "id": "winter-banana",
+      "name": "Winter Banana",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Cass County, Indiana",
+        "year": 1876
+      },
+      "parentage": "Chance seedling",
+      "skin": "#e8cf5a",
+      "blush": "#e88a7a",
+      "sweetness": 3,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A pale waxy heirloom with a faint tropical perfume.",
+      "notes": "Named for its mild banana-like aroma; a reliable pollinator."
+    },
+    {
+      "id": "blenheim-orange",
+      "name": "Blenheim Orange",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Woodstock, Oxfordshire",
+        "year": 1740
+      },
+      "parentage": "Chance seedling",
+      "skin": "#d98a3d",
+      "blush": "#b0611f",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "baking"
+      ],
+      "season": "Fall",
+      "flavor_text": "A stately dual-purpose heirloom with a nutty crumble.",
+      "notes": "A famous English heirloom found near Blenheim Palace."
+    },
+    {
+      "id": "james-grieve",
+      "name": "James Grieve",
+      "aka": [],
+      "origin": {
+        "country": "Scotland",
+        "region": "Edinburgh",
+        "year": 1893
+      },
+      "parentage": "Pott's Seedling or Cox seedling",
+      "skin": "#d6b23f",
+      "blush": "#d8492a",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A juicy Scottish early \u2014 soft, sharp, and short-lived.",
+      "notes": "A tender Scottish variety that bruises easily but bursts with juice."
+    },
+    {
+      "id": "alkmene",
+      "name": "Alkmene",
+      "aka": [
+        "Early Windsor"
+      ],
+      "origin": {
+        "country": "Germany",
+        "region": "M\u00fcncheberg",
+        "year": 1930
+      },
+      "parentage": "Cox's Orange Pippin \u00d7 Oldenburg",
+      "skin": "#d85a3f",
+      "blush": "#b0341c",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A Cox-like German drop with an aromatic snap.",
+      "notes": "A German Cox descendant grown widely across Europe."
+    },
+    {
+      "id": "katja",
+      "name": "Katja",
+      "aka": [
+        "Katy"
+      ],
+      "origin": {
+        "country": "Sweden",
+        "region": "Balsg\u00e5rd",
+        "year": 1947
+      },
+      "parentage": "Worcester Pearmain \u00d7 James Grieve",
+      "skin": "#d83a41",
+      "blush": "#9c2026",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A cheerful Swedish early, bright and berryish.",
+      "notes": "A popular Scandinavian early apple, also good for juice."
+    },
+    {
+      "id": "topaz",
+      "name": "Topaz",
+      "aka": [],
+      "origin": {
+        "country": "Czech Republic",
+        "region": "St\u0159\u00ed\u017eovice",
+        "year": 1984
+      },
+      "parentage": "Rub\u00edn \u00d7 Vanda",
+      "skin": "#d8622e",
+      "blush": "#a83c14",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "cider",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A scab-proof modern with a bracing, honeyed tang.",
+      "notes": "A disease-resistant Czech variety popular with organic growers."
     }
   ]
 }

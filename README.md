@@ -51,9 +51,9 @@ colours, so bad data fails loudly.
 ## Ideas for later
 
 - More cultivars (there are always more heirlooms and cider apples)
-- Share a link that opens a specific apple
-- Compare two apples side by side
+- A print / export view for a favourite list
 
 Done so far: light/dark theme, bicolour striped sprites, a "surprise me"
 random apple button, pixel-art country flags, a harvest-season filter,
-favourites saved to `localStorage`, and a mutable chiptune blip on card open.
+favourites saved to `localStorage`, a mutable chiptune blip on card open,
+shareable `#slug` links, a two-apple compare view, and a back-to-top button.

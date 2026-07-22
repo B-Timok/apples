@@ -138,7 +138,6 @@ body {
 }
 
 .filter-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.use-filters { display: contents; }
 
 .right-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 #random.chip { background: var(--panel-hi); color: var(--yellow); }
@@ -227,6 +226,28 @@ body {
 }
 .star:hover { color: var(--yellow); }
 .star.on { color: var(--yellow); }
+
+.cmp {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  z-index: 2;
+}
+.cmp:hover { color: var(--cyan); }
+.cmp.on { color: var(--cyan); text-shadow: 0 0 0 var(--cyan); }
+.card .cmp.on::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--cyan);
+}
 .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--line); background: var(--panel-hi); }
 .card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
 
@@ -380,6 +401,108 @@ body {
 .notes { margin-top: 16px; padding-top: 14px; border-top: 3px dashed var(--line); color: var(--muted); font-size: 20px; }
 
 .stats-block { margin: 14px 0; }
+
+/* ---- Compare tray -------------------------------------------------------- */
+.compare-tray {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 94vw;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 3px solid var(--line);
+  box-shadow: 5px 5px 0 var(--line);
+}
+.tray-label { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--muted); }
+.tray-chip {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  color: var(--ink);
+  background: var(--bg-2);
+  border: 2px solid var(--line);
+  cursor: pointer;
+}
+.tray-chip:hover { background: var(--panel-hi); }
+.tray-sprite { width: 26px; height: 26px; image-rendering: pixelated; }
+.tray-go {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 8px 12px;
+  color: var(--line);
+  background: var(--green);
+  border: 3px solid var(--green-dk);
+  box-shadow: 2px 2px 0 var(--line);
+  cursor: pointer;
+}
+.tray-go:active { transform: translate(2px, 2px); box-shadow: none; }
+.tray-hint { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--muted); }
+.tray-clear {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 8px 10px;
+  color: var(--muted);
+  background: var(--panel-hi);
+  border: 2px solid var(--line);
+  cursor: pointer;
+}
+
+/* ---- Compare modal ------------------------------------------------------- */
+.compare-heads { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: center; }
+.compare-head { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.compare-sprite { width: 84px; height: 84px; image-rendering: pixelated; }
+.compare-name { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--green); line-height: 1.4; }
+.compare-origin { color: var(--muted); font-size: 17px; }
+.compare-season {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 4px 6px;
+  background: var(--green-dk);
+  color: var(--ink);
+  border: 2px solid var(--line);
+}
+.compare-stats { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.compare-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; }
+.compare-stat-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  text-align: center;
+  min-width: 56px;
+}
+.compare-pips.right { justify-content: flex-end; }
+.compare-pips.left { justify-content: flex-start; }
+
+/* ---- Back-to-top FAB ----------------------------------------------------- */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 800;
+  width: 46px;
+  height: 46px;
+  font-size: 16px;
+  color: var(--line);
+  background: var(--green);
+  border: 3px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.to-top.show { opacity: 1; pointer-events: auto; }
+.to-top:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
 
 /* ---- Footer -------------------------------------------------------------- */
 .foot {

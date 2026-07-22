@@ -138,6 +138,18 @@ const FLAGS = {
     "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr",
     "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr",
   ],
+  "Scotland": [
+    "wwbbbbbbbbww", "bwwbbbbbbwwb", "bbwwbbbbwwbb", "bbbwwbbwwbbb",
+    "bbbwwbbwwbbb", "bbwwbbbbwwbb", "bwwbbbbbbwwb", "wwbbbbbbbbww",
+  ],
+  "Germany": [
+    "kkkkkkkkkkkk", "kkkkkkkkkkkk", "kkkkkkkkkkkk", "rrrrrrrrrrrr",
+    "rrrrrrrrrrrr", "yyyyyyyyyyyy", "yyyyyyyyyyyy", "yyyyyyyyyyyy",
+  ],
+  "Czech Republic": [
+    "bbwwwwwwwwww", "bbbwwwwwwwww", "bbbbwwwwwwww", "bbbbbwwwwwww",
+    "bbbbbrrrrrrr", "bbbbrrrrrrrr", "bbbrrrrrrrrr", "bbrrrrrrrrrr",
+  ],
 };
 
 function flagEl(country) {
@@ -160,15 +172,14 @@ function flagEl(country) {
 }
 
 /* ---- State + data -------------------------------------------------------- */
-const USES = ["eating", "baking", "cider", "sauce", "salad", "storage"];
 let APPLES = [];
 const faves = new Set(JSON.parse(localStorage.getItem("orchard-faves") || "[]"));
 const state = {
   query: "",
-  uses: new Set(),
   sort: "name",
   season: "all",
   favesOnly: false,
+  compare: [],   // up to 2 apple ids selected for side-by-side
   muted: localStorage.getItem("orchard-muted") === "1",
 };
 
@@ -199,6 +210,131 @@ function toggleFave(id) {
   render();
 }
 
+/* ---- Compare (pick two, view side by side) ------------------------------- */
+function toggleCompare(id) {
+  const i = state.compare.indexOf(id);
+  if (i >= 0) { state.compare.splice(i, 1); blip(440, 0.07); }
+  else {
+    if (state.compare.length >= 2) state.compare.shift();  // drop the oldest pick
+    state.compare.push(id);
+    blip(660, 0.07);
+  }
+  render();
+}
+
+function renderCompareTray() {
+  const tray = $("#compare-tray");
+  const picks = state.compare.map(byId).filter(Boolean);
+  tray.innerHTML = "";
+  if (!picks.length) { tray.classList.add("hidden"); return; }
+  tray.classList.remove("hidden");
+
+  const label = document.createElement("span");
+  label.className = "tray-label";
+  label.textContent = "COMPARE";
+  tray.appendChild(label);
+
+  picks.forEach((a) => {
+    const chip = document.createElement("button");
+    chip.className = "tray-chip";
+    const c = document.createElement("canvas");
+    c.className = "tray-sprite";
+    chip.appendChild(c);
+    chip.appendChild(document.createTextNode(`${a.name} ✕`));
+    chip.title = "Remove from compare";
+    chip.addEventListener("click", () => toggleCompare(a.id));
+    tray.appendChild(chip);
+    drawSprite(c, a.skin, 3, a.blush);
+  });
+
+  if (picks.length === 2) {
+    const go = document.createElement("button");
+    go.className = "tray-go";
+    go.textContent = "VS →";
+    go.addEventListener("click", openCompare);
+    tray.appendChild(go);
+  } else {
+    const hint = document.createElement("span");
+    hint.className = "tray-hint";
+    hint.textContent = "pick one more";
+    tray.appendChild(hint);
+  }
+
+  const clear = document.createElement("button");
+  clear.className = "tray-clear";
+  clear.textContent = "CLEAR";
+  clear.addEventListener("click", () => { state.compare = []; render(); });
+  tray.appendChild(clear);
+}
+
+function comparePips(value, cls, align) {
+  const pips = document.createElement("div");
+  pips.className = `pips compare-pips ${align}`;
+  for (let i = 1; i <= 5; i++) {
+    const p = document.createElement("span");
+    p.className = "pip" + (i <= value ? ` on-${cls}` : "");
+    pips.appendChild(p);
+  }
+  return pips;
+}
+
+function openCompare() {
+  const [a, b] = state.compare.map(byId);
+  if (!a || !b) return;
+  const body = $("#modal-body");
+  body.innerHTML = "";
+
+  const wrap = document.createElement("div");
+  wrap.className = "compare";
+
+  const heads = document.createElement("div");
+  heads.className = "compare-heads";
+  [a, b].forEach((ap) => {
+    const h = document.createElement("div");
+    h.className = "compare-head";
+    const c = document.createElement("canvas");
+    c.className = "compare-sprite";
+    h.appendChild(c);
+    const nm = document.createElement("div");
+    nm.className = "compare-name";
+    nm.textContent = ap.name;
+    h.appendChild(nm);
+    const og = document.createElement("div");
+    og.className = "compare-origin";
+    const fe = flagEl(ap.origin.country);
+    if (fe) og.appendChild(fe);
+    og.appendChild(document.createTextNode(` ${ap.origin.country} · ${ap.origin.year}`));
+    h.appendChild(og);
+    const se = document.createElement("div");
+    se.className = "compare-season";
+    se.textContent = ap.season;
+    h.appendChild(se);
+    heads.appendChild(h);
+    drawSprite(c, ap.skin, 6, ap.blush);
+  });
+  wrap.appendChild(heads);
+
+  const stats = document.createElement("div");
+  stats.className = "compare-stats";
+  [["SWEET", "sweetness", "sweet"], ["TART", "tartness", "tart"], ["CRISP", "crispness", "crisp"]]
+    .forEach(([label, key, cls]) => {
+      const row = document.createElement("div");
+      row.className = "compare-row";
+      row.appendChild(comparePips(a[key], cls, "right"));
+      const lab = document.createElement("span");
+      lab.className = "compare-stat-label";
+      lab.textContent = label;
+      row.appendChild(lab);
+      row.appendChild(comparePips(b[key], cls, "left"));
+      stats.appendChild(row);
+    });
+  wrap.appendChild(stats);
+
+  body.appendChild(wrap);
+  $("#modal").classList.remove("hidden");
+  blip(523, 0.1);
+}
+
 const $ = (sel) => document.querySelector(sel);
 const grid = $("#grid");
 
@@ -211,25 +347,10 @@ async function boot() {
     grid.innerHTML = `<p class="empty">Couldn't load apples.json.<br>Run <code>python serve.py</code> and open via http://localhost:8000</p>`;
     return;
   }
-  buildUseFilters();
   wireControls();
   render();
-}
-
-function buildUseFilters() {
-  const box = $("#use-filters");
-  USES.forEach((use) => {
-    const chip = document.createElement("button");
-    chip.className = "chip";
-    chip.textContent = use;
-    chip.addEventListener("click", () => {
-      chip.classList.toggle("active");
-      if (state.uses.has(use)) state.uses.delete(use);
-      else state.uses.add(use);
-      render();
-    });
-    box.appendChild(chip);
-  });
+  openFromHash();
+  window.addEventListener("hashchange", openFromHash);
 }
 
 function wireControls() {
@@ -254,6 +375,12 @@ function wireControls() {
     syncSound();
     blip(660, 0.07); // audible confirmation when un-muting
   });
+
+  const toTop = $("#to-top");
+  toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  const syncToTop = () => toTop.classList.toggle("show", window.scrollY > 400);
+  window.addEventListener("scroll", syncToTop, { passive: true });
+  syncToTop();
   $("#modal-close").addEventListener("click", closeModal);
   $("#modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
@@ -281,7 +408,6 @@ function wireControls() {
 function matches(a) {
   if (state.favesOnly && !faves.has(a.id)) return false;
   if (state.season !== "all" && a.season !== state.season) return false;
-  for (const u of state.uses) if (!a.best_for.includes(u)) return false;   // AND across chips
   if (!state.query) return true;
   const hay = [
     a.name, a.aka.join(" "), a.origin.country, a.origin.region,
@@ -306,6 +432,7 @@ function sortApples(list) {
 function render() {
   const list = sortApples(APPLES.filter(matches));
   $("#count").textContent = `${list.length} / ${APPLES.length} CULTIVARS`;
+  renderCompareTray();
   grid.innerHTML = "";
   if (!list.length) {
     grid.innerHTML = `<p class="empty">No apples match that. Try fewer filters. 🍂</p>`;
@@ -326,6 +453,14 @@ function card(a) {
   star.setAttribute("aria-label", "Toggle favourite");
   star.addEventListener("click", (e) => { e.stopPropagation(); toggleFave(a.id); });
   el.appendChild(star);
+
+  const cmp = document.createElement("button");
+  cmp.className = "cmp" + (state.compare.includes(a.id) ? " on" : "");
+  cmp.textContent = "⚖";
+  cmp.title = "Add to compare";
+  cmp.setAttribute("aria-label", "Add to compare");
+  cmp.addEventListener("click", (e) => { e.stopPropagation(); toggleCompare(a.id); });
+  el.appendChild(cmp);
 
   const canvas = document.createElement("canvas");
   canvas.className = "sprite";
@@ -460,6 +595,7 @@ function openModal(a) {
 
   drawSprite(canvas, a.skin, 8, a.blush);
   $("#modal").classList.remove("hidden");
+  setHash(a.id);
   blip(660, 0.09);
 }
 
@@ -470,6 +606,27 @@ function field(key, val) {
   return row;
 }
 
-function closeModal() { $("#modal").classList.add("hidden"); }
+function closeModal() {
+  $("#modal").classList.add("hidden");
+  setHash(null);
+}
+
+/* ---- Shareable links (#slug) --------------------------------------------- */
+const byId = (id) => APPLES.find((a) => a.id === id);
+
+function setHash(id) {
+  const base = location.pathname + location.search;
+  history.replaceState(null, "", id ? `${base}#${id}` : base);
+}
+
+function openFromHash() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id) {
+    if (!$("#modal").classList.contains("hidden")) closeModal();
+    return;
+  }
+  const apple = byId(id);
+  if (apple) openModal(apple);
+}
 
 boot();
