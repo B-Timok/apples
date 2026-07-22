@@ -207,7 +207,7 @@ function card(a) {
   el.addEventListener("click", () => openModal(a));
   el.addEventListener("keydown", (e) => { if (e.key === "Enter") openModal(a); });
 
-  drawSprite(canvas, a.skin, 6);
+  drawSprite(canvas, a.skin, 7);
   return el;
 }
 
