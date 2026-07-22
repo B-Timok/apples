@@ -77,10 +77,9 @@ body {
 /* ---- Hero ---------------------------------------------------------------- */
 .hero { text-align: center; padding: 28px 0 8px; position: relative; }
 
-.theme-toggle {
+.corner-btn {
   position: absolute;
   top: 20px;
-  right: 4px;
   font-size: 18px;
   line-height: 1;
   width: 44px;
@@ -91,8 +90,10 @@ body {
   box-shadow: 3px 3px 0 var(--line);
   cursor: pointer;
 }
-.theme-toggle:hover { background: var(--panel-hi); }
-.theme-toggle:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
+.corner-btn:hover { background: var(--panel-hi); }
+.corner-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
+.theme-toggle { right: 4px; }
+.sound-toggle { right: 56px; }
 
 .title {
   font-family: 'Press Start 2P', monospace;
@@ -136,11 +137,15 @@ body {
   justify-content: space-between;
 }
 
-.filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.use-filters { display: contents; }
 
 .right-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 #random.chip { background: var(--panel-hi); color: var(--yellow); }
 #random.chip:hover { background: var(--green); color: var(--line); }
+
+.fave-chip { color: var(--yellow); }
+.fave-chip.active { background: var(--yellow); color: var(--line); border-color: var(--line); }
 
 .chip {
   font-family: 'Press Start 2P', monospace;
@@ -197,6 +202,7 @@ body {
 @media (max-width: 620px)  { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 .card {
+  position: relative;
   background: var(--panel);
   border: 3px solid var(--line);
   box-shadow: var(--shadow);
@@ -205,6 +211,22 @@ body {
   cursor: pointer;
   transition: transform 0.06s, box-shadow 0.06s;
 }
+
+.star {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  z-index: 2;
+}
+.star:hover { color: var(--yellow); }
+.star.on { color: var(--yellow); }
 .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--line); background: var(--panel-hi); }
 .card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
 
@@ -309,6 +331,20 @@ body {
   line-height: 1.5;
 }
 .modal-aka { color: var(--muted); font-size: 18px; }
+
+.modal-star {
+  margin-top: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 7px 9px;
+  color: var(--yellow);
+  background: var(--bg-2);
+  border: 3px solid var(--line);
+  box-shadow: 2px 2px 0 var(--line);
+  cursor: pointer;
+}
+.modal-star.on { background: var(--yellow); color: var(--line); }
+.modal-star:active { transform: translate(2px, 2px); box-shadow: none; }
 
 .flavor {
   border-left: 4px solid var(--yellow);

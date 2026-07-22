@@ -20,7 +20,8 @@
   <div class="scanlines" aria-hidden="true"></div>
 
   <header class="hero">
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark">☾</button>
+    <button id="sound-toggle" class="corner-btn sound-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    <button id="theme-toggle" class="corner-btn theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark">☾</button>
     <h1 class="title">🍎 8-BIT ORCHARD</h1>
     <p class="subtitle">A pixel catalogue of apple cultivars — the Apple Dex</p>
   </header>
@@ -28,9 +29,22 @@
   <section class="controls" aria-label="Filters">
     <input id="search" class="search" type="text" placeholder="SEARCH APPLES..." autocomplete="off" />
     <div class="filter-row">
-      <div class="filter-group" id="use-filters" aria-label="Best for"></div>
+      <div class="filter-group">
+        <button id="faves-toggle" class="chip fave-chip" title="Show only favourites">★ FAVES</button>
+        <span id="use-filters" class="use-filters" aria-label="Best for"></span>
+      </div>
       <div class="right-controls">
         <button id="random" class="chip" title="Open a random apple">🎲 SURPRISE ME</button>
+        <label class="sort-wrap">
+          SEASON
+          <select id="season" class="sort">
+            <option value="all">All</option>
+            <option value="Late Summer">Late Summer</option>
+            <option value="Early Fall">Early Fall</option>
+            <option value="Fall">Fall</option>
+            <option value="Late Fall">Late Fall</option>
+          </select>
+        </label>
         <label class="sort-wrap">
           SORT
           <select id="sort" class="sort">

@@ -92,7 +92,7 @@ function drawSprite(canvas, skin, px, blush) {
    Emoji flags don't render on Windows, so we draw tiny 12x8 pixel flags on a
    canvas instead — cross-platform and on-theme. w=white r=red b=blue.
 --------------------------------------------------------------------------- */
-const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93", y: "#f4d02a" };
+const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93", y: "#f4d02a", k: "#1c1c22" };
 const FLAGS = {
   "USA": [
     "bbbbbrrrrrrr", "bwbwbwwwwwww", "bbbbbrrrrrrr", "bwbwbwwwwwww",
@@ -134,6 +134,10 @@ const FLAGS = {
     "bbbyybbbbbbb", "bbbyybbbbbbb", "bbbyybbbbbbb", "yyyyyyyyyyyy",
     "yyyyyyyyyyyy", "bbbyybbbbbbb", "bbbyybbbbbbb", "bbbyybbbbbbb",
   ],
+  "Belgium": [
+    "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr",
+    "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr", "kkkkyyyyrrrr",
+  ],
 };
 
 function flagEl(country) {
@@ -158,7 +162,42 @@ function flagEl(country) {
 /* ---- State + data -------------------------------------------------------- */
 const USES = ["eating", "baking", "cider", "sauce", "salad", "storage"];
 let APPLES = [];
-const state = { query: "", uses: new Set(), sort: "name" };
+const faves = new Set(JSON.parse(localStorage.getItem("orchard-faves") || "[]"));
+const state = {
+  query: "",
+  uses: new Set(),
+  sort: "name",
+  season: "all",
+  favesOnly: false,
+  muted: localStorage.getItem("orchard-muted") === "1",
+};
+
+/* ---- Sound: tiny WebAudio chiptune blips ---------------------------------- */
+let audioCtx = null;
+function blip(freq = 660, dur = 0.08, type = "square") {
+  if (state.muted) return;
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + dur);
+  } catch (e) { /* audio unavailable — no-op */ }
+}
+
+/* ---- Favourites ---------------------------------------------------------- */
+function isFave(id) { return faves.has(id); }
+function toggleFave(id) {
+  if (faves.has(id)) { faves.delete(id); blip(392, 0.09); }
+  else { faves.add(id); blip(784, 0.09); }
+  localStorage.setItem("orchard-faves", JSON.stringify([...faves]));
+  render();
+}
 
 const $ = (sel) => document.querySelector(sel);
 const grid = $("#grid");
@@ -196,6 +235,25 @@ function buildUseFilters() {
 function wireControls() {
   $("#search").addEventListener("input", (e) => { state.query = e.target.value.toLowerCase().trim(); render(); });
   $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
+  $("#season").addEventListener("change", (e) => { state.season = e.target.value; render(); });
+
+  const favesBtn = $("#faves-toggle");
+  favesBtn.addEventListener("click", () => {
+    state.favesOnly = !state.favesOnly;
+    favesBtn.classList.toggle("active", state.favesOnly);
+    blip(state.favesOnly ? 587 : 494, 0.07);
+    render();
+  });
+
+  const soundBtn = $("#sound-toggle");
+  const syncSound = () => { soundBtn.textContent = state.muted ? "🔇" : "🔊"; };
+  syncSound();
+  soundBtn.addEventListener("click", () => {
+    state.muted = !state.muted;
+    localStorage.setItem("orchard-muted", state.muted ? "1" : "0");
+    syncSound();
+    blip(660, 0.07); // audible confirmation when un-muting
+  });
   $("#modal-close").addEventListener("click", closeModal);
   $("#modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
@@ -221,6 +279,8 @@ function wireControls() {
 
 /* ---- Filtering + sorting ------------------------------------------------- */
 function matches(a) {
+  if (state.favesOnly && !faves.has(a.id)) return false;
+  if (state.season !== "all" && a.season !== state.season) return false;
   for (const u of state.uses) if (!a.best_for.includes(u)) return false;   // AND across chips
   if (!state.query) return true;
   const hay = [
@@ -259,6 +319,14 @@ function card(a) {
   el.className = "card";
   el.tabIndex = 0;
 
+  const star = document.createElement("button");
+  star.className = "star" + (isFave(a.id) ? " on" : "");
+  star.textContent = isFave(a.id) ? "★" : "☆";
+  star.title = "Favourite";
+  star.setAttribute("aria-label", "Toggle favourite");
+  star.addEventListener("click", (e) => { e.stopPropagation(); toggleFave(a.id); });
+  el.appendChild(star);
+
   const canvas = document.createElement("canvas");
   canvas.className = "sprite";
   el.appendChild(canvas);
@@ -287,6 +355,7 @@ function card(a) {
 
   el.addEventListener("click", () => openModal(a));
   el.addEventListener("keydown", (e) => { if (e.key === "Enter") openModal(a); });
+  // (blip on open is handled in openModal so keyboard + random button share it)
 
   drawSprite(canvas, a.skin, 7, a.blush);
   return el;
@@ -320,9 +389,19 @@ function openModal(a) {
   const canvas = document.createElement("canvas");
   head.appendChild(canvas);
   const htext = document.createElement("div");
+  const star = document.createElement("button");
+  star.className = "modal-star" + (isFave(a.id) ? " on" : "");
+  star.textContent = isFave(a.id) ? "★ FAVOURITE" : "☆ FAVOURITE";
+  star.addEventListener("click", () => {
+    toggleFave(a.id);
+    const on = isFave(a.id);
+    star.className = "modal-star" + (on ? " on" : "");
+    star.textContent = on ? "★ FAVOURITE" : "☆ FAVOURITE";
+  });
   htext.innerHTML =
     `<h2 id="modal-name" class="modal-name">${a.name}</h2>` +
     (a.aka.length ? `<div class="modal-aka">aka ${a.aka.join(", ")}</div>` : "");
+  htext.appendChild(star);
   head.appendChild(htext);
   body.appendChild(head);
 
@@ -381,6 +460,7 @@ function openModal(a) {
 
   drawSprite(canvas, a.skin, 8, a.blush);
   $("#modal").classList.remove("hidden");
+  blip(660, 0.09);
 }
 
 function field(key, val) {
