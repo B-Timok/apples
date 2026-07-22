@@ -1,7 +1,7 @@
 """The Orchard — source of truth for the 8-bit apple catalogue.
 
 Every apple is defined here as an :class:`Apple`. ``build.py`` reads this list
-and emits ``web/apples.json`` for the front end. Keep the data honest and the
+and emits ``docs/apples.json`` for the front end. Keep the data honest and the
 flavor text fun.
 
 Stats (sweetness / tartness / crispness) are on a 1-5 scale, RPG style.

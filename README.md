@@ -22,14 +22,19 @@ in one step. Press `Esc` to close a card.
 
 ```
 data/apples.py   ← source of truth (Python dataclasses, one Apple each)
-build.py         ← emits web/apples.json
-serve.py         ← build + serve web/ locally
-web/
+build.py         ← emits docs/apples.json
+serve.py         ← build + serve docs/ locally
+docs/            ← the site (named docs/ so GitHub Pages serves it directly)
   index.html     ← markup
   style.css      ← the 8-bit theme (small NES-ish palette, scanlines)
   app.js         ← filtering, sorting, and the pixel-apple sprite generator
   apples.json    ← generated; don't edit by hand
 ```
+
+## Deploy (GitHub Pages)
+
+Pages → Settings → Pages → *Deploy from a branch* → `main` / **`/docs`**. The
+`docs/` folder is served at the site root, so the app is the landing page.
 
 ### Sprites
 

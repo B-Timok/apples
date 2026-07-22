@@ -4,7 +4,7 @@
     python serve.py 8080       # start looking from 8080 instead
     PORT=9000 python serve.py  # or set it via the environment
 
-Rebuilds web/apples.json from the Python data, then serves web/. Ctrl-C to stop.
+Rebuilds docs/apples.json from the Python data, then serves docs/. Ctrl-C to stop.
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from build import build
 
 DEFAULT_PORT = int(os.environ.get("PORT", 8000))
 PORT_TRIES = 20  # if the port is busy, hop upward this many times
-WEB_DIR = Path(__file__).parent / "web"
+WEB_DIR = Path(__file__).parent / "docs"
 
 
 class Server(socketserver.TCPServer):
