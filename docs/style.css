@@ -111,6 +111,15 @@ body {
 
 .subtitle { color: var(--muted); margin: 12px 0 0; font-size: 22px; }
 
+/* On narrow screens the centered title rises into the corner buttons, so drop
+   the title below the button band and shrink the buttons a touch. */
+@media (max-width: 560px) {
+  .hero { padding-top: 62px; }
+  .corner-btn { top: 10px; width: 40px; height: 40px; font-size: 16px; }
+  .theme-toggle { right: 8px; }
+  .sound-toggle { right: 52px; }
+}
+
 /* ---- Controls ------------------------------------------------------------ */
 .controls {
   max-width: 1180px;
