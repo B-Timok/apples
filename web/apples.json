@@ -1,0 +1,427 @@
+{
+  "generated_by": "build.py",
+  "count": 18,
+  "apples": [
+    {
+      "id": "honeycrisp",
+      "name": "Honeycrisp",
+      "aka": [
+        "Honeycrunch"
+      ],
+      "origin": {
+        "country": "USA",
+        "region": "Minnesota",
+        "year": 1974
+      },
+      "parentage": "Keepsake \u00d7 MN1627",
+      "skin": "#e0574d",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 5,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "An explosive CRUNCH echoes. Cells the size of dungeon tiles burst with juice.",
+      "notes": "Bred at the University of Minnesota; parent of many modern varieties."
+    },
+    {
+      "id": "fuji",
+      "name": "Fuji",
+      "aka": [],
+      "origin": {
+        "country": "Japan",
+        "region": "Fujisaki, Aomori",
+        "year": 1939
+      },
+      "parentage": "Red Delicious \u00d7 Ralls Janet",
+      "skin": "#d94e5a",
+      "sweetness": 5,
+      "tartness": 1,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "storage",
+        "salad"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A dense sugar bomb. Keeps for seasons in the cellar without losing HP.",
+      "notes": "Named after Fujisaki, the town where it was developed \u2014 not Mt. Fuji."
+    },
+    {
+      "id": "gala",
+      "name": "Gala",
+      "aka": [
+        "Royal Gala"
+      ],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Greytown",
+        "year": 1934
+      },
+      "parentage": "Kidd's Orange Red \u00d7 Golden Delicious",
+      "skin": "#e8623a",
+      "sweetness": 4,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "The friendly starter apple. Mild, sweet, and always in the party.",
+      "notes": "One of the most-produced apple varieties in the world."
+    },
+    {
+      "id": "granny-smith",
+      "name": "Granny Smith",
+      "aka": [],
+      "origin": {
+        "country": "Australia",
+        "region": "Ryde, Sydney",
+        "year": 1868
+      },
+      "parentage": "Chance seedling",
+      "skin": "#7bbf3f",
+      "sweetness": 2,
+      "tartness": 5,
+      "crispness": 4,
+      "best_for": [
+        "baking",
+        "eating",
+        "salad"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A sour blade of green. Crits hardest in pies and baking quests.",
+      "notes": "A chance seedling found by Maria Ann Smith among discarded French crab apples."
+    },
+    {
+      "id": "red-delicious",
+      "name": "Red Delicious",
+      "aka": [
+        "Hawkeye"
+      ],
+      "origin": {
+        "country": "USA",
+        "region": "Peru, Iowa",
+        "year": 1872
+      },
+      "parentage": "Chance seedling",
+      "skin": "#a5232b",
+      "sweetness": 3,
+      "tartness": 1,
+      "crispness": 2,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Fall",
+      "flavor_text": "All armor, little damage. Legendary looks, gentle flavor.",
+      "notes": "Originally the 'Hawkeye'; bred over decades for appearance and shelf life."
+    },
+    {
+      "id": "golden-delicious",
+      "name": "Golden Delicious",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Clay County, West Virginia",
+        "year": 1905
+      },
+      "parentage": "Chance seedling",
+      "skin": "#e8c94a",
+      "sweetness": 4,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "baking",
+        "sauce"
+      ],
+      "season": "Fall",
+      "flavor_text": "A mellow all-rounder that buffs any recipe it joins.",
+      "notes": "The state fruit of West Virginia; unrelated to Red Delicious."
+    },
+    {
+      "id": "cox-orange-pippin",
+      "name": "Cox's Orange Pippin",
+      "aka": [
+        "Cox"
+      ],
+      "origin": {
+        "country": "England",
+        "region": "Colnbrook, Buckinghamshire",
+        "year": 1825
+      },
+      "parentage": "Ribston Pippin seedling",
+      "skin": "#d98a3d",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "Aromatic and complex \u2014 connoisseurs seek this rare drop.",
+      "notes": "Raised by retired brewer Richard Cox; a benchmark for flavour in England."
+    },
+    {
+      "id": "braeburn",
+      "name": "Braeburn",
+      "aka": [],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Waiwhero",
+        "year": 1952
+      },
+      "parentage": "Chance seedling (likely Lady Hamilton)",
+      "skin": "#c0392b",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "baking"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "Sharp and firm. A balanced dual-type: sweet AND tart.",
+      "notes": "A chance seedling discovered in New Zealand in the early 1950s."
+    },
+    {
+      "id": "pink-lady",
+      "name": "Pink Lady",
+      "aka": [
+        "Cripps Pink"
+      ],
+      "origin": {
+        "country": "Australia",
+        "region": "Western Australia",
+        "year": 1973
+      },
+      "parentage": "Golden Delicious \u00d7 Lady Williams",
+      "skin": "#e56b9f",
+      "sweetness": 4,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "baking",
+        "salad"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "Effervescent pink fizz with a tart finishing strike.",
+      "notes": "The first apple marketed under a trademarked brand name (Cripps Pink)."
+    },
+    {
+      "id": "mcintosh",
+      "name": "McIntosh",
+      "aka": [
+        "Mac"
+      ],
+      "origin": {
+        "country": "Canada",
+        "region": "Dundela, Ontario",
+        "year": 1811
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b32d3a",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 2,
+      "best_for": [
+        "eating",
+        "sauce"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "Tender and wine-red; melts into the ultimate sauce potion.",
+      "notes": "Canada's national apple; discovered by John McIntosh in Ontario."
+    },
+    {
+      "id": "jonagold",
+      "name": "Jonagold",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Geneva, New York",
+        "year": 1953
+      },
+      "parentage": "Jonathan \u00d7 Golden Delicious",
+      "skin": "#e07a2e",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "baking"
+      ],
+      "season": "Fall",
+      "flavor_text": "Jonathan \u00d7 Golden hybrid. Big, honeyed, and quest-ready for baking.",
+      "notes": "A triploid cross developed at Cornell's research station."
+    },
+    {
+      "id": "empire",
+      "name": "Empire",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Geneva, New York",
+        "year": 1945
+      },
+      "parentage": "McIntosh \u00d7 Red Delicious",
+      "skin": "#9e2a3c",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Fall",
+      "flavor_text": "A crisp, sturdy traveler that resists bruising on long journeys.",
+      "notes": "Bred in Geneva, New York, combining McIntosh flavour with firmer flesh."
+    },
+    {
+      "id": "bramley",
+      "name": "Bramley",
+      "aka": [
+        "Bramley's Seedling"
+      ],
+      "origin": {
+        "country": "England",
+        "region": "Southwell, Nottinghamshire",
+        "year": 1809
+      },
+      "parentage": "Chance seedling",
+      "skin": "#6fae3c",
+      "sweetness": 1,
+      "tartness": 5,
+      "crispness": 3,
+      "best_for": [
+        "baking",
+        "sauce"
+      ],
+      "season": "Fall",
+      "flavor_text": "The cooking boss. Too sour raw; collapses into fluffy pie gold.",
+      "notes": "Grown from a pip planted by Mary Ann Brailsford around 1809."
+    },
+    {
+      "id": "jazz",
+      "name": "Jazz",
+      "aka": [
+        "Scifresh"
+      ],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Hawke's Bay",
+        "year": 1985
+      },
+      "parentage": "Braeburn \u00d7 Gala",
+      "skin": "#cf3a44",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 5,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A modern remix of Braeburn \u00d7 Gala \u2014 improvised crunch and tang.",
+      "notes": "A trademarked variety; managed as a controlled global brand."
+    },
+    {
+      "id": "envy",
+      "name": "Envy",
+      "aka": [
+        "Scilate"
+      ],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Hawke's Bay",
+        "year": 2008
+      },
+      "parentage": "Royal Gala \u00d7 Braeburn",
+      "skin": "#d62b3f",
+      "sweetness": 5,
+      "tartness": 2,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Fall",
+      "flavor_text": "Slow to brown, sweet to the core. The show-off of the fruit bowl.",
+      "notes": "Resists browning when cut, making it a favourite for snack platters."
+    },
+    {
+      "id": "ambrosia",
+      "name": "Ambrosia",
+      "aka": [],
+      "origin": {
+        "country": "Canada",
+        "region": "British Columbia",
+        "year": 1990
+      },
+      "parentage": "Chance seedling",
+      "skin": "#e77b6b",
+      "sweetness": 5,
+      "tartness": 1,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Fall",
+      "flavor_text": "Nectar of the gods; low-acid honey with a floral aura.",
+      "notes": "Discovered in a British Columbia orchard; the name means 'food of the gods.'"
+    },
+    {
+      "id": "winesap",
+      "name": "Winesap",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "New Jersey (likely)",
+        "year": 1800
+      },
+      "parentage": "Chance seedling",
+      "skin": "#7c1f2b",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "cider",
+        "eating",
+        "baking"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "Tannic and spicy \u2014 the cidermaker's secret weapon since colonial times.",
+      "notes": "An American heirloom prized for cider since the 1800s."
+    },
+    {
+      "id": "newtown-pippin",
+      "name": "Newtown Pippin",
+      "aka": [
+        "Albemarle Pippin"
+      ],
+      "origin": {
+        "country": "USA",
+        "region": "Newtown, Queens, New York",
+        "year": 1700
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b9c24a",
+      "sweetness": 2,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "cider",
+        "baking",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "America's founding apple. Jefferson's favoured heirloom drop.",
+      "notes": "One of the oldest American varieties, dating to early 1700s Queens."
+    }
+  ]
+}

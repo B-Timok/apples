@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8-BIT ORCHARD — Apple Dex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="hero">
+    <h1 class="title">🍎 8-BIT ORCHARD</h1>
+    <p class="subtitle">A pixel catalogue of apple cultivars — the Apple Dex</p>
+  </header>
+
+  <section class="controls" aria-label="Filters">
+    <input id="search" class="search" type="text" placeholder="SEARCH APPLES..." autocomplete="off" />
+    <div class="filter-row">
+      <div class="filter-group" id="use-filters" aria-label="Best for"></div>
+      <label class="sort-wrap">
+        SORT
+        <select id="sort" class="sort">
+          <option value="name">A–Z</option>
+          <option value="sweetness">Sweetest</option>
+          <option value="tartness">Tartest</option>
+          <option value="crispness">Crispest</option>
+          <option value="year">Oldest</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <p id="count" class="count"></p>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>DATA: <code>data/apples.py</code> → <code>apples.json</code></span>
+    <span>PRESS <kbd>ESC</kbd> TO CLOSE • <kbd>↑↓</kbd> STATS ARE 1–5</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
