@@ -661,10 +661,15 @@ function openModal(a) {
 
   const wiki = document.createElement("a");
   wiki.className = "wiki-link";
-  wiki.href = a.wiki || `https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(a.name + " apple")}`;
+  if (a.wiki) {
+    wiki.href = a.wiki;
+    wiki.textContent = "WIKIPEDIA ↗";
+  } else {
+    wiki.href = `https://www.google.com/search?q=${encodeURIComponent(a.name + " apple")}`;
+    wiki.textContent = "SEARCH ↗";
+  }
   wiki.target = "_blank";
   wiki.rel = "noopener";
-  wiki.textContent = "WIKIPEDIA ↗";
   body.appendChild(wiki);
 
   drawSprite(canvas, a.skin, 8, a.blush);
