@@ -44,6 +44,8 @@
 
 html { image-rendering: pixelated; }
 
+.hidden { display: none !important; }
+
 body {
   margin: 0;
   padding: 0 16px 64px;
@@ -353,19 +355,21 @@ body {
 }
 .modal-aka { color: var(--muted); font-size: 18px; }
 
-.modal-star {
-  margin-top: 10px;
+.modal-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.modal-star, .modal-cmp {
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
   padding: 7px 9px;
-  color: var(--yellow);
   background: var(--bg-2);
   border: 3px solid var(--line);
   box-shadow: 2px 2px 0 var(--line);
   cursor: pointer;
 }
+.modal-star { color: var(--yellow); }
 .modal-star.on { background: var(--yellow); color: var(--line); }
-.modal-star:active { transform: translate(2px, 2px); box-shadow: none; }
+.modal-cmp { color: var(--cyan); }
+.modal-cmp.on { background: var(--cyan); color: var(--line); }
+.modal-star:active, .modal-cmp:active { transform: translate(2px, 2px); box-shadow: none; }
 
 .flavor {
   border-left: 4px solid var(--yellow);
@@ -533,11 +537,7 @@ body {
   padding-top: 14px;
 }
 .foot code { color: var(--green); }
-.foot kbd {
-  background: var(--panel);
-  border: 2px solid var(--line);
-  padding: 1px 5px;
-  color: var(--ink);
-}
+.foot-link { color: var(--green); text-decoration: none; }
+.foot-link:hover { text-decoration: underline; }
 
 .empty { text-align: center; color: var(--muted); grid-column: 1 / -1; padding: 40px 0; font-size: 22px; }

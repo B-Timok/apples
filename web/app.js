@@ -528,6 +528,13 @@ function openModal(a) {
   const canvas = document.createElement("canvas");
   head.appendChild(canvas);
   const htext = document.createElement("div");
+  htext.innerHTML =
+    `<h2 id="modal-name" class="modal-name">${a.name}</h2>` +
+    (a.aka.length ? `<div class="modal-aka">aka ${a.aka.join(", ")}</div>` : "");
+
+  const actions = document.createElement("div");
+  actions.className = "modal-actions";
+
   const star = document.createElement("button");
   star.className = "modal-star" + (isFave(a.id) ? " on" : "");
   star.textContent = isFave(a.id) ? "★ FAVOURITE" : "☆ FAVOURITE";
@@ -537,10 +544,19 @@ function openModal(a) {
     star.className = "modal-star" + (on ? " on" : "");
     star.textContent = on ? "★ FAVOURITE" : "☆ FAVOURITE";
   });
-  htext.innerHTML =
-    `<h2 id="modal-name" class="modal-name">${a.name}</h2>` +
-    (a.aka.length ? `<div class="modal-aka">aka ${a.aka.join(", ")}</div>` : "");
-  htext.appendChild(star);
+  actions.appendChild(star);
+
+  const cmpBtn = document.createElement("button");
+  const inCmp = () => state.compare.includes(a.id);
+  const syncCmp = () => {
+    cmpBtn.className = "modal-cmp" + (inCmp() ? " on" : "");
+    cmpBtn.textContent = inCmp() ? "⚖ COMPARING" : "⚖ COMPARE";
+  };
+  syncCmp();
+  cmpBtn.addEventListener("click", () => { toggleCompare(a.id); syncCmp(); });
+  actions.appendChild(cmpBtn);
+
+  htext.appendChild(actions);
   head.appendChild(htext);
   body.appendChild(head);
 
