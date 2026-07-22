@@ -118,6 +118,10 @@ body {
   .corner-btn { top: 10px; width: 40px; height: 40px; font-size: 16px; }
   .theme-toggle { right: 8px; }
   .sound-toggle { right: 52px; }
+  /* Hide the "best for" tags on cards to give the sprite and name more room.
+     (They're still shown in the detail modal.) Higher specificity so this
+     wins over the base .card-tags rule defined later in the file. */
+  .card .card-tags { display: none; }
 }
 
 /* ---- Controls ------------------------------------------------------------ */
