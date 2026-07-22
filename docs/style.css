@@ -111,19 +111,6 @@ body {
 
 .subtitle { color: var(--muted); margin: 12px 0 0; font-size: 22px; }
 
-/* On narrow screens the centered title rises into the corner buttons, so drop
-   the title below the button band and shrink the buttons a touch. */
-@media (max-width: 560px) {
-  .hero { padding-top: 62px; }
-  .corner-btn { top: 10px; width: 40px; height: 40px; font-size: 16px; }
-  .theme-toggle { right: 8px; }
-  .sound-toggle { right: 52px; }
-  /* Hide the "best for" tags on cards to give the sprite and name more room.
-     (They're still shown in the detail modal.) Higher specificity so this
-     wins over the base .card-tags rule defined later in the file. */
-  .card .card-tags { display: none; }
-}
-
 /* ---- Controls ------------------------------------------------------------ */
 .controls {
   max-width: 1180px;
@@ -577,3 +564,51 @@ body {
 .foot-link:hover { text-decoration: underline; }
 
 .empty { text-align: center; color: var(--muted); grid-column: 1 / -1; padding: 40px 0; font-size: 22px; }
+
+/* ==========================================================================
+   Mobile (<=560px) — placed last so these overrides win over the base rules
+   above on equal specificity. Scale cards, modals, and the compare view down
+   so nothing is cramped; sprite sizes keep integer ratios of their source
+   canvas (112 / 128 / 96 px) to stay crisp.
+   ========================================================================== */
+@media (max-width: 560px) {
+  /* Header */
+  .hero { padding-top: 62px; }
+  .corner-btn { top: 10px; width: 40px; height: 40px; font-size: 16px; }
+  .theme-toggle { right: 8px; }
+  .sound-toggle { right: 52px; }
+  .subtitle { font-size: 18px; }
+
+  /* Cards */
+  .grid { gap: 12px; }
+  .card { padding: 10px 8px; }
+  .card canvas.sprite { width: 80px; height: 80px; }
+  .card-name { font-size: 9px; min-height: 0; margin: 8px 0 5px; }
+  .card-origin { font-size: 16px; }
+  .card .card-tags { display: none; }  /* still shown in the detail modal */
+  .star, .tried, .cmp { font-size: 15px; }
+  .tried { right: 30px; }
+
+  /* Detail modal */
+  .modal { padding: 10px; }
+  .modal-card { padding: 16px 14px; }
+  .modal-close { width: 30px; height: 30px; font-size: 11px; }
+  .modal-head { gap: 12px; }
+  .modal-head canvas { width: 80px; height: 80px; }
+  .modal-name { font-size: 12px; }
+  .modal-aka { font-size: 16px; }
+  .flavor { font-size: 18px; padding: 8px 10px; }
+  .field-key { width: 74px; font-size: 8px; }
+  .field-val { font-size: 17px; }
+  .notes { font-size: 17px; }
+  .meter-label { width: 62px; }
+  .pip { width: 12px; height: 12px; }
+
+  /* Compare view */
+  .compare-heads { gap: 8px; }
+  .compare-sprite { width: 64px; height: 64px; }
+  .compare-name { font-size: 9px; }
+  .compare-origin { font-size: 15px; }
+  .compare-row { gap: 8px; }
+  .compare-stat-label { min-width: 44px; font-size: 8px; }
+}
