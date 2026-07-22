@@ -9,7 +9,7 @@ Python is the data layer; the browser does the pixel art.
 ## Run it
 
 ```bash
-python serve.py
+python3 serve.py
 ```
 
 Then open <http://localhost:8000>. That rebuilds the data and serves the site
