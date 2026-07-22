@@ -128,6 +128,17 @@ function wireControls() {
   $("#modal-close").addEventListener("click", closeModal);
   $("#modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  const toggle = $("#theme-toggle");
+  const syncGlyph = () =>
+    (toggle.textContent = document.documentElement.getAttribute("data-theme") === "light" ? "☀" : "☾");
+  syncGlyph();
+  toggle.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("orchard-theme", next);
+    syncGlyph();
+  });
 }
 
 /* ---- Filtering + sorting ------------------------------------------------- */

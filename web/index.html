@@ -8,11 +8,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply saved theme before paint to avoid a flash. Dark by default.
+    (function () {
+      var t = localStorage.getItem("orchard-theme") || "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
 </head>
 <body>
   <div class="scanlines" aria-hidden="true"></div>
 
   <header class="hero">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark">☾</button>
     <h1 class="title">🍎 8-BIT ORCHARD</h1>
     <p class="subtitle">A pixel catalogue of apple cultivars — the Apple Dex</p>
   </header>

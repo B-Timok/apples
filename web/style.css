@@ -3,20 +3,40 @@
    Palette is deliberately small and NES-ish. No rounded corners, no smoothing.
    ========================================================================== */
 
-:root {
-  --bg:        #17131f;
-  --bg-2:      #1f1a2e;
-  --panel:     #2a2340;
-  --panel-hi:  #362d52;
-  --ink:       #f4f1e6;
-  --muted:     #9a92b0;
-  --line:      #0d0b14;
+/* Dark is the default. Backgrounds are true black / white; the small accent
+   palette is shared, with a few hues nudged for contrast in light mode. */
+:root,
+:root[data-theme="dark"] {
+  --bg:        #000000;
+  --bg-2:      #111119;
+  --panel:     #191921;
+  --panel-hi:  #26262f;
+  --ink:       #f2efe6;
+  --muted:     #9c94b2;
+  --line:      #34343f;
   --green:     #7bc74d;
   --green-dk:  #4f8a2f;
   --red:       #e43b44;
   --yellow:    #ffd93b;
   --pink:      #f072b6;
   --cyan:      #63d6d0;
+  --shadow:    4px 4px 0 var(--line);
+}
+
+:root[data-theme="light"] {
+  --bg:        #ffffff;
+  --bg-2:      #efeadf;
+  --panel:     #f7f3ea;
+  --panel-hi:  #eae3d4;
+  --ink:       #191320;
+  --muted:     #6a6379;
+  --line:      #191320;
+  --green:     #3f7a24;
+  --green-dk:  #2f5d1a;
+  --red:       #d62b34;
+  --yellow:    #c98a00;
+  --pink:      #cf3f89;
+  --cyan:      #167f7a;
   --shadow:    4px 4px 0 var(--line);
 }
 
@@ -27,10 +47,7 @@ html { image-rendering: pixelated; }
 body {
   margin: 0;
   padding: 0 16px 64px;
-  background:
-    radial-gradient(circle at 20% -10%, #2a2140 0, transparent 55%),
-    radial-gradient(circle at 90% 0%, #241c3a 0, transparent 50%),
-    var(--bg);
+  background: var(--bg);
   color: var(--ink);
   font-family: 'VT323', monospace;
   font-size: 20px;
@@ -58,7 +75,24 @@ body {
 .pixel-font { font-family: 'Press Start 2P', monospace; }
 
 /* ---- Hero ---------------------------------------------------------------- */
-.hero { text-align: center; padding: 28px 0 8px; }
+.hero { text-align: center; padding: 28px 0 8px; position: relative; }
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 4px;
+  font-size: 18px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+  background: var(--panel);
+  border: 3px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  cursor: pointer;
+}
+.theme-toggle:hover { background: var(--panel-hi); }
+.theme-toggle:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
 
 .title {
   font-family: 'Press Start 2P', monospace;
