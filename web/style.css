@@ -345,6 +345,81 @@ body {
 
 .stats-block { margin: 14px 0; }
 
+/* ---- View tabs + country filter ------------------------------------------ */
+.hidden { display: none !important; }
+
+.view-tabs { max-width: 1180px; margin: 20px auto 0; display: flex; justify-content: center; gap: 10px; }
+.tab {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 10px 16px;
+  color: var(--muted);
+  background: var(--panel);
+  border: 3px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  cursor: pointer;
+}
+.tab:hover { background: var(--panel-hi); }
+.tab.active { color: var(--line); background: var(--green); border-color: var(--green-dk); }
+
+.active-country { text-align: center; margin: 10px auto 0; max-width: 1180px; }
+.country-chip {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 8px 10px;
+  color: var(--yellow);
+  background: var(--panel-hi);
+  border: 3px solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.country-chip:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
+
+/* ---- Map ----------------------------------------------------------------- */
+.map-view { max-width: 1180px; margin: 12px auto 0; }
+.map-wrap {
+  position: relative;
+  width: 100%;
+  border: 3px solid var(--line);
+  box-shadow: var(--shadow);
+  background: #14233f;
+  line-height: 0;
+}
+#worldmap { width: 100%; height: auto; display: block; image-rendering: pixelated; }
+.markers { position: absolute; inset: 0; }
+.marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.marker-dot {
+  width: 12px; height: 12px;
+  background: var(--yellow);
+  border: 2px solid var(--line);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.06s, background 0.06s;
+}
+.marker:hover .marker-dot { background: var(--red); transform: scale(1.25); }
+.marker-count {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--ink);
+  background: var(--panel);
+  border: 2px solid var(--line);
+  padding: 2px 3px;
+  margin-top: 3px;
+}
+.map-hint { text-align: center; color: var(--muted); font-size: 18px; margin-top: 12px; }
+
 /* ---- Footer -------------------------------------------------------------- */
 .foot {
   max-width: 1180px;

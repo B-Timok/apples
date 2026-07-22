@@ -48,12 +48,19 @@ Append an `Apple(...)` to `APPLES` in `data/apples.py`, then re-run
 `python serve.py`. Stats are 1–5. `build.py` validates ids, stat ranges, and
 colours, so bad data fails loudly.
 
+## Views
+
+- **Grid** — the browsable catalogue of stat cards.
+- **Map** — a pixel world map (drawn on canvas) with a pin per origin country,
+  sized by how many cultivars come from there. Click a pin to filter the grid
+  to that country; the active filter shows as a chip you can clear.
+
 ## Ideas for later
 
-- More cultivars (heirlooms, cider apples, regional varieties)
-- Filter by origin country or season; a world-map view of origins
+- More cultivars (there are always more heirlooms and cider apples)
+- Filter by harvest season
 - Chiptune blip on card open
 - Favourites saved to `localStorage`
 
 Done so far: light/dark theme, bicolour striped sprites, a "surprise me"
-random apple button.
+random apple button, pixel-art country flags, and a clickable origins map.

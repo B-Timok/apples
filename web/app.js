@@ -92,7 +92,7 @@ function drawSprite(canvas, skin, px, blush) {
    Emoji flags don't render on Windows, so we draw tiny 12x8 pixel flags on a
    canvas instead — cross-platform and on-theme. w=white r=red b=blue.
 --------------------------------------------------------------------------- */
-const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93" };
+const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93", y: "#f4d02a" };
 const FLAGS = {
   "USA": [
     "bbbbbrrrrrrr", "bwbwbwwwwwww", "bbbbbrrrrrrr", "bwbwbwwwwwww",
@@ -130,6 +130,10 @@ const FLAGS = {
     "rrrwwrrrrrrr", "rrrwwrrrrrrr", "rrrwwrrrrrrr", "wwwwwwwwwwww",
     "wwwwwwwwwwww", "rrrwwrrrrrrr", "rrrwwrrrrrrr", "rrrwwrrrrrrr",
   ],
+  "Sweden": [
+    "bbbyybbbbbbb", "bbbyybbbbbbb", "bbbyybbbbbbb", "yyyyyyyyyyyy",
+    "yyyyyyyyyyyy", "bbbyybbbbbbb", "bbbyybbbbbbb", "bbbyybbbbbbb",
+  ],
 };
 
 function flagEl(country) {
@@ -151,10 +155,87 @@ function flagEl(country) {
   return canvas;
 }
 
+/* ---- Pixel world map -------------------------------------------------------
+   A stylised 64x32 equirectangular map. Land is defined as inclusive column
+   spans per row; countries are pinned by grid cell. Drawn once to a canvas;
+   clickable markers are HTML overlaid on top by percentage position.
+--------------------------------------------------------------------------- */
+const MAP_W = 64, MAP_H = 32;
+const LAND = [
+  [], [[6, 12], [22, 26], [42, 60]], [[3, 15], [21, 27], [30, 62]],
+  [[3, 16], [21, 26], [29, 63]], [[2, 18], [22, 25], [29, 63]],
+  [[2, 20], [23, 24], [29, 63]], [[3, 21], [29, 63]], [[4, 22], [30, 63]],
+  [[5, 22], [30, 63]], [[8, 20], [30, 63]], [[12, 19], [29, 63]],
+  [[16, 24], [28, 44], [46, 63]], [[17, 25], [28, 44], [54, 62]],
+  [[17, 26], [29, 43], [52, 60]], [[18, 26], [30, 42], [53, 60]],
+  [[18, 26], [30, 41], [54, 59]], [[19, 26], [31, 40]],
+  [[19, 25], [32, 39], [52, 59]], [[19, 25], [33, 38], [51, 60]],
+  [[20, 25], [34, 37], [51, 60]], [[20, 24], [34, 37], [52, 59], [62, 63]],
+  [[20, 24], [53, 58], [62, 63]], [[21, 24], [54, 57], [62, 63]],
+  [[21, 23]], [[21, 23]], [[21, 22]], [[21, 22]], [], [], [],
+  [[0, 63]], [[0, 63]],
+];
+
+// Country pins as {col, row} on the 64x32 grid (nudged to reduce overlap).
+const COUNTRY_COORDS = {
+  "USA": [16, 9], "Canada": [13, 6], "England": [31, 6], "France": [32, 8],
+  "Netherlands": [33, 6], "Denmark": [34, 5], "Sweden": [35, 4],
+  "Japan": [57, 9], "Australia": [56, 20], "New Zealand": [62, 22],
+};
+
+function isLand(col, row) {
+  const spans = LAND[row];
+  if (!spans) return false;
+  return spans.some(([s, e]) => col >= s && col <= e);
+}
+
+function drawWorldMap(canvas, px) {
+  canvas.width = MAP_W * px;
+  canvas.height = MAP_H * px;
+  const ctx = canvas.getContext("2d");
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = "#14233f";                 // ocean
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (let row = 0; row < MAP_H; row++) {
+    for (let col = 0; col < MAP_W; col++) {
+      if (!isLand(col, row)) continue;
+      let color = "#4f8a3f";                  // land
+      if (row >= 30) color = "#c8d2dc";       // Antarctic ice
+      else if (!isLand(col, row - 1)) color = "#63a24d";  // top-lit coastline
+      ctx.fillStyle = color;
+      ctx.fillRect(col * px, row * px, px, px);
+    }
+  }
+}
+
+function countByCountry() {
+  const counts = {};
+  APPLES.forEach((a) => { counts[a.origin.country] = (counts[a.origin.country] || 0) + 1; });
+  return counts;
+}
+
+function renderMarkers() {
+  const box = $("#markers");
+  box.innerHTML = "";
+  const counts = countByCountry();
+  Object.entries(COUNTRY_COORDS).forEach(([country, [col, row]]) => {
+    const n = counts[country] || 0;
+    if (!n) return;
+    const m = document.createElement("button");
+    m.className = "marker";
+    m.style.left = `${((col + 0.5) / MAP_W) * 100}%`;
+    m.style.top = `${((row + 0.5) / MAP_H) * 100}%`;
+    m.title = `${country} — ${n} ${n === 1 ? "apple" : "apples"}`;
+    m.innerHTML = `<span class="marker-dot"></span><span class="marker-count">${n}</span>`;
+    m.addEventListener("click", () => setCountry(country));
+    box.appendChild(m);
+  });
+}
+
 /* ---- State + data -------------------------------------------------------- */
 const USES = ["eating", "baking", "cider", "sauce", "salad", "storage"];
 let APPLES = [];
-const state = { query: "", uses: new Set(), sort: "name" };
+const state = { query: "", uses: new Set(), sort: "name", view: "grid", country: null };
 
 const $ = (sel) => document.querySelector(sel);
 const grid = $("#grid");
@@ -170,6 +251,8 @@ async function boot() {
   }
   buildUseFilters();
   wireControls();
+  drawWorldMap($("#worldmap"), 10);
+  renderMarkers();
   render();
 }
 
@@ -196,6 +279,9 @@ function wireControls() {
   $("#modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
+  $("#tab-grid").addEventListener("click", () => showView("grid"));
+  $("#tab-map").addEventListener("click", () => showView("map"));
+
   $("#random").addEventListener("click", () => {
     // Pick from whatever is currently visible, so filters still apply.
     const pool = APPLES.filter(matches);
@@ -217,6 +303,7 @@ function wireControls() {
 
 /* ---- Filtering + sorting ------------------------------------------------- */
 function matches(a) {
+  if (state.country && a.origin.country !== state.country) return false;
   for (const u of state.uses) if (!a.best_for.includes(u)) return false;   // AND across chips
   if (!state.query) return true;
   const hay = [
@@ -238,10 +325,46 @@ function sortApples(list) {
   return [...list].sort(by[s] || by.name);
 }
 
+/* ---- View + country filter ----------------------------------------------- */
+function showView(view) {
+  state.view = view;
+  $("#grid").classList.toggle("hidden", view !== "grid");
+  $("#map-view").classList.toggle("hidden", view !== "map");
+  $("#tab-grid").classList.toggle("active", view === "grid");
+  $("#tab-map").classList.toggle("active", view === "map");
+}
+
+function setCountry(country) {
+  state.country = country;
+  showView("grid");
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function clearCountry() {
+  state.country = null;
+  render();
+}
+
+function renderActiveCountry() {
+  const box = $("#active-country");
+  box.innerHTML = "";
+  if (!state.country) return;
+  const chip = document.createElement("button");
+  chip.className = "country-chip";
+  const fe = flagEl(state.country);
+  if (fe) chip.appendChild(fe);
+  chip.appendChild(document.createTextNode(` FROM ${state.country.toUpperCase()} ✕`));
+  chip.title = "Clear country filter";
+  chip.addEventListener("click", clearCountry);
+  box.appendChild(chip);
+}
+
 /* ---- Rendering ----------------------------------------------------------- */
 function render() {
   const list = sortApples(APPLES.filter(matches));
   $("#count").textContent = `${list.length} / ${APPLES.length} CULTIVARS`;
+  renderActiveCountry();
   grid.innerHTML = "";
   if (!list.length) {
     grid.innerHTML = `<p class="empty">No apples match that. Try fewer filters. 🍂</p>`;

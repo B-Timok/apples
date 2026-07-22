@@ -1,6 +1,6 @@
 {
   "generated_by": "build.py",
-  "count": 29,
+  "count": 37,
   "apples": [
     {
       "id": "honeycrisp",
@@ -703,6 +703,186 @@
       "season": "Fall",
       "flavor_text": "A tangy Dutch favourite, all honey and lemon-drop.",
       "notes": "Hugely popular across Europe; a Golden Delicious cross."
+    },
+    {
+      "id": "kingston-black",
+      "name": "Kingston Black",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Kingston, Somerset",
+        "year": 1820
+      },
+      "parentage": "Chance seedling",
+      "skin": "#6e1d26",
+      "blush": "#43101a",
+      "sweetness": 2,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "cider"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "The cidermaker's grail \u2014 a rare all-in-one bittersharp.",
+      "notes": "A prized English cider apple that ferments into a complete vintage cider."
+    },
+    {
+      "id": "dabinett",
+      "name": "Dabinett",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Somerset",
+        "year": 1900
+      },
+      "parentage": "Chance seedling",
+      "skin": "#a83b33",
+      "blush": "#6e1f1c",
+      "sweetness": 2,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "cider"
+      ],
+      "season": "Fall",
+      "flavor_text": "A bittersweet workhorse \u2014 soft tannins for a mellow scrumpy.",
+      "notes": "A classic bittersweet English cider apple."
+    },
+    {
+      "id": "ashmeads-kernel",
+      "name": "Ashmead's Kernel",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Gloucester",
+        "year": 1700
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b08048",
+      "blush": null,
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A russet relic with a sharp, pear-drop fizz and deep sugar.",
+      "notes": "A centuries-old English russet celebrated for its intense flavour."
+    },
+    {
+      "id": "cortland",
+      "name": "Cortland",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Geneva, New York",
+        "year": 1898
+      },
+      "parentage": "Ben Davis \u00d7 McIntosh",
+      "skin": "#c22f3a",
+      "blush": "#86151f",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "salad"
+      ],
+      "season": "Fall",
+      "flavor_text": "A snow-white Mac cousin that resists browning in the salad bowl.",
+      "notes": "Bred in New York; its white flesh is slow to brown when sliced."
+    },
+    {
+      "id": "idared",
+      "name": "Idared",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Idaho",
+        "year": 1942
+      },
+      "parentage": "Jonathan \u00d7 Wagener",
+      "skin": "#d23340",
+      "blush": "#8f1822",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "baking",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A tart keeper that only sweetens through the long winter.",
+      "notes": "Stores for months and mellows in flavour over time."
+    },
+    {
+      "id": "liberty",
+      "name": "Liberty",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Geneva, New York",
+        "year": 1978
+      },
+      "parentage": "Macoun \u00d7 PRI 54-12",
+      "skin": "#b8323f",
+      "blush": "#7a1824",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "A hardy, disease-resistant knight bred for the organic orchard.",
+      "notes": "One of the first scab-resistant varieties, ideal for low-spray growing."
+    },
+    {
+      "id": "discovery",
+      "name": "Discovery",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Langham, Essex",
+        "year": 1949
+      },
+      "parentage": "Worcester Pearmain seedling",
+      "skin": "#d83a41",
+      "blush": "#9c1f26",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "One of the season's first drops \u2014 bright, strawberry-tinged.",
+      "notes": "An early English apple with a hint of strawberry in the skin."
+    },
+    {
+      "id": "aroma",
+      "name": "Aroma",
+      "aka": [],
+      "origin": {
+        "country": "Sweden",
+        "region": "Balsg\u00e5rd",
+        "year": 1973
+      },
+      "parentage": "Ingrid Marie \u00d7 Filippa",
+      "skin": "#d5473f",
+      "blush": "#a02a24",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "baking"
+      ],
+      "season": "Fall",
+      "flavor_text": "A fragrant Nordic favourite, aromatic and juicy.",
+      "notes": "A popular Scandinavian dessert apple."
     }
   ]
 }
