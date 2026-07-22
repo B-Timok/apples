@@ -5,15 +5,18 @@
 
 /* Dark is the default. Backgrounds are true black / white; the small accent
    palette is shared, with a few hues nudged for contrast in light mode. */
+/* Neutral grayscale chrome so the pixel-art apples carry all the colour.
+   Accent hues (green/red/yellow/pink/cyan) are reserved for functional bits
+   like stat pips and the logo. */
 :root,
 :root[data-theme="dark"] {
   --bg:        #000000;
-  --bg-2:      #121311;
-  --panel:     #1a1b17;
-  --panel-hi:  #262722;
-  --ink:       #f2efe6;
-  --muted:     #9e9c8e;
-  --line:      #3a3a31;
+  --bg-2:      #141414;
+  --panel:     #1c1c1c;
+  --panel-hi:  #292929;
+  --ink:       #f4f3f0;
+  --muted:     #9a9a9a;
+  --line:      #3a3a3a;
   --green:     #7bc74d;
   --green-dk:  #4f8a2f;
   --red:       #e43b44;
@@ -25,12 +28,12 @@
 
 :root[data-theme="light"] {
   --bg:        #ffffff;
-  --bg-2:      #efece1;
-  --panel:     #f7f4ea;
-  --panel-hi:  #eae4d5;
-  --ink:       #1a1712;
-  --muted:     #6b675c;
-  --line:      #1a1712;
+  --bg-2:      #f0f0f0;
+  --panel:     #f6f6f6;
+  --panel-hi:  #e7e7e7;
+  --ink:       #1a1a1a;
+  --muted:     #6b6b6b;
+  --line:      #1c1c1c;
   --green:     #3f7a24;
   --green-dk:  #2f5d1a;
   --red:       #d62b34;
@@ -147,6 +150,8 @@ body {
 
 .fave-chip { color: var(--yellow); }
 .fave-chip.active { background: var(--yellow); color: var(--line); border-color: var(--line); }
+.tried-chip { color: var(--green); }
+.tried-chip.active { background: var(--green); color: var(--line); border-color: var(--green-dk); }
 
 .chip {
   font-family: 'Press Start 2P', monospace;
@@ -228,6 +233,22 @@ body {
 }
 .star:hover { color: var(--yellow); }
 .star.on { color: var(--yellow); }
+
+.tried {
+  position: absolute;
+  top: 8px;
+  right: 36px;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  z-index: 2;
+}
+.tried:hover { color: var(--green); }
+.tried.on { color: var(--green); }
 
 .cmp {
   position: absolute;
@@ -356,7 +377,7 @@ body {
 .modal-aka { color: var(--muted); font-size: 18px; }
 
 .modal-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.modal-star, .modal-cmp {
+.modal-star, .modal-cmp, .modal-tried {
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
   padding: 7px 9px;
@@ -369,7 +390,9 @@ body {
 .modal-star.on { background: var(--yellow); color: var(--line); }
 .modal-cmp { color: var(--cyan); }
 .modal-cmp.on { background: var(--cyan); color: var(--line); }
-.modal-star:active, .modal-cmp:active { transform: translate(2px, 2px); box-shadow: none; }
+.modal-tried { color: var(--green); }
+.modal-tried.on { background: var(--green); color: var(--line); }
+.modal-star:active, .modal-cmp:active, .modal-tried:active { transform: translate(2px, 2px); box-shadow: none; }
 
 .flavor {
   border-left: 4px solid var(--yellow);

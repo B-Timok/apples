@@ -58,6 +58,6 @@ sets a `wiki` URL, otherwise a name-based Wikipedia search.
 
 Done so far: light/dark theme, bicolour striped sprites, a "surprise me"
 random apple button, pixel-art country flags, a harvest-season filter,
-favourites saved to `localStorage`, a mutable chiptune blip on card open,
-shareable `#slug` links, a two-apple compare view, a back-to-top button,
-and per-apple Wikipedia links.
+favourites and a "tried it" log (both saved to `localStorage`), a mutable
+chiptune blip on card open, shareable `#slug` links, a two-apple compare
+view, a back-to-top button, and per-apple Wikipedia links.

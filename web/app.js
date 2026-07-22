@@ -158,6 +158,10 @@ const FLAGS = {
     "rrrrrrrrrrrr", "rrrrrwwrrrrr", "rrrrrwwrrrrr", "rrrwwwwwwrrr",
     "rrrwwwwwwrrr", "rrrrrwwrrrrr", "rrrrrwwrrrrr", "rrrrrrrrrrrr",
   ],
+  "Russia": [
+    "wwwwwwwwwwww", "wwwwwwwwwwww", "wwwwwwwwwwww", "bbbbbbbbbbbb",
+    "bbbbbbbbbbbb", "rrrrrrrrrrrr", "rrrrrrrrrrrr", "rrrrrrrrrrrr",
+  ],
 };
 
 function flagEl(country) {
@@ -182,11 +186,13 @@ function flagEl(country) {
 /* ---- State + data -------------------------------------------------------- */
 let APPLES = [];
 const faves = new Set(JSON.parse(localStorage.getItem("orchard-faves") || "[]"));
+const tried = new Set(JSON.parse(localStorage.getItem("orchard-tried") || "[]"));
 const state = {
   query: "",
   sort: "name",
   season: "all",
   favesOnly: false,
+  triedOnly: false,
   compare: [],   // up to 2 apple ids selected for side-by-side
   muted: localStorage.getItem("orchard-muted") === "1",
 };
@@ -215,6 +221,14 @@ function toggleFave(id) {
   if (faves.has(id)) { faves.delete(id); blip(392, 0.09); }
   else { faves.add(id); blip(784, 0.09); }
   localStorage.setItem("orchard-faves", JSON.stringify([...faves]));
+  render();
+}
+
+function isTried(id) { return tried.has(id); }
+function toggleTried(id) {
+  if (tried.has(id)) { tried.delete(id); blip(330, 0.09); }
+  else { tried.add(id); blip(587, 0.09); }
+  localStorage.setItem("orchard-tried", JSON.stringify([...tried]));
   render();
 }
 
@@ -374,6 +388,14 @@ function wireControls() {
     render();
   });
 
+  const triedBtn = $("#tried-toggle");
+  triedBtn.addEventListener("click", () => {
+    state.triedOnly = !state.triedOnly;
+    triedBtn.classList.toggle("active", state.triedOnly);
+    blip(state.triedOnly ? 523 : 440, 0.07);
+    render();
+  });
+
   const soundBtn = $("#sound-toggle");
   const syncSound = () => { soundBtn.textContent = state.muted ? "🔇" : "🔊"; };
   syncSound();
@@ -415,6 +437,7 @@ function wireControls() {
 /* ---- Filtering + sorting ------------------------------------------------- */
 function matches(a) {
   if (state.favesOnly && !faves.has(a.id)) return false;
+  if (state.triedOnly && !tried.has(a.id)) return false;
   if (state.season !== "all" && a.season !== state.season) return false;
   if (!state.query) return true;
   const hay = [
@@ -461,6 +484,14 @@ function card(a) {
   star.setAttribute("aria-label", "Toggle favourite");
   star.addEventListener("click", (e) => { e.stopPropagation(); toggleFave(a.id); });
   el.appendChild(star);
+
+  const triedBtn = document.createElement("button");
+  triedBtn.className = "tried" + (isTried(a.id) ? " on" : "");
+  triedBtn.textContent = "✓";
+  triedBtn.title = isTried(a.id) ? "Tried it" : "Mark as tried";
+  triedBtn.setAttribute("aria-label", "Toggle tried");
+  triedBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleTried(a.id); });
+  el.appendChild(triedBtn);
 
   const cmp = document.createElement("button");
   cmp.className = "cmp" + (state.compare.includes(a.id) ? " on" : "");
@@ -549,6 +580,17 @@ function openModal(a) {
     star.textContent = on ? "★ FAVOURITE" : "☆ FAVOURITE";
   });
   actions.appendChild(star);
+
+  const triedBtn = document.createElement("button");
+  triedBtn.className = "modal-tried" + (isTried(a.id) ? " on" : "");
+  triedBtn.textContent = isTried(a.id) ? "✓ TRIED" : "✓ TRIED IT?";
+  triedBtn.addEventListener("click", () => {
+    toggleTried(a.id);
+    const on = isTried(a.id);
+    triedBtn.className = "modal-tried" + (on ? " on" : "");
+    triedBtn.textContent = on ? "✓ TRIED" : "✓ TRIED IT?";
+  });
+  actions.appendChild(triedBtn);
 
   const cmpBtn = document.createElement("button");
   const inCmp = () => state.compare.includes(a.id);

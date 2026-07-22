@@ -1,6 +1,6 @@
 {
   "generated_by": "build.py",
-  "count": 72,
+  "count": 104,
   "apples": [
     {
       "id": "honeycrisp",
@@ -1769,6 +1769,769 @@
       "season": "Late Fall",
       "flavor_text": "A Cox-like English keeper with a dusky violet blush.",
       "notes": "A late English dessert apple related to Cox's Orange Pippin.",
+      "wiki": null
+    },
+    {
+      "id": "roxbury-russet",
+      "name": "Roxbury Russet",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Roxbury, Massachusetts",
+        "year": 1635
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b08a4a",
+      "blush": null,
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "cider",
+        "storage",
+        "baking"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "America's oldest named apple \u2014 a colonial russet still going strong.",
+      "notes": "The oldest apple variety bred in America.",
+      "wiki": null
+    },
+    {
+      "id": "esopus-spitzenburg",
+      "name": "Esopus Spitzenburg",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Esopus, New York",
+        "year": 1790
+      },
+      "parentage": "Chance seedling",
+      "skin": "#c62f34",
+      "blush": "#8a1a20",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "Jefferson's favourite \u2014 spicy, complex, and aristocratic.",
+      "notes": "Reputedly Thomas Jefferson's favourite apple.",
+      "wiki": null
+    },
+    {
+      "id": "wolf-river",
+      "name": "Wolf River",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Wisconsin",
+        "year": 1875
+      },
+      "parentage": "Chance seedling",
+      "skin": "#c0403a",
+      "blush": "#86201e",
+      "sweetness": 2,
+      "tartness": 3,
+      "crispness": 2,
+      "best_for": [
+        "baking"
+      ],
+      "season": "Fall",
+      "flavor_text": "A giant of an apple \u2014 a single fruit can fill a pie.",
+      "notes": "Famous for enormous fruit, ideal for baking.",
+      "wiki": null
+    },
+    {
+      "id": "haralson",
+      "name": "Haralson",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Minnesota",
+        "year": 1922
+      },
+      "parentage": "Malinda \u00d7 Wealthy",
+      "skin": "#c62f38",
+      "blush": "#8a1820",
+      "sweetness": 2,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "baking",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A tart, ironclad keeper bred for brutal Minnesota winters.",
+      "notes": "A cold-hardy Minnesota apple, tart and firm.",
+      "wiki": null
+    },
+    {
+      "id": "sweet-sixteen",
+      "name": "Sweet Sixteen",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Minnesota",
+        "year": 1977
+      },
+      "parentage": "Malinda \u00d7 Northern Spy",
+      "skin": "#d24a44",
+      "blush": "#9c2a26",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "An oddball charmer with notes of cherry candy and anise.",
+      "notes": "A cold-hardy Minnesota apple with unusual cherry-anise flavour.",
+      "wiki": null
+    },
+    {
+      "id": "keepsake",
+      "name": "Keepsake",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Minnesota",
+        "year": 1978
+      },
+      "parentage": "Malinda \u00d7 Northern Spy",
+      "skin": "#b8323f",
+      "blush": "#7a1824",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 5,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A hard little gem \u2014 and the parent of Honeycrisp.",
+      "notes": "A Honeycrisp parent; dense, sweet, and long-keeping.",
+      "wiki": null
+    },
+    {
+      "id": "frostbite",
+      "name": "Frostbite",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Minnesota",
+        "year": 1936
+      },
+      "parentage": "Malinda seedling",
+      "skin": "#8f1f2a",
+      "blush": "#5c1220",
+      "sweetness": 5,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A tiny sugar bomb tasting of molasses and sugarcane.",
+      "notes": "An intensely sweet Minnesota apple with molasses notes.",
+      "wiki": null
+    },
+    {
+      "id": "duchess-oldenburg",
+      "name": "Duchess of Oldenburg",
+      "aka": [],
+      "origin": {
+        "country": "Russia",
+        "region": "Russia",
+        "year": 1700
+      },
+      "parentage": "Chance seedling",
+      "skin": "#d24a44",
+      "blush": "#9c2a26",
+      "sweetness": 2,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "baking",
+        "sauce"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "An ironclad Russian early, tart enough to pucker.",
+      "notes": "A very cold-hardy Russian heirloom, good for cooking.",
+      "wiki": null
+    },
+    {
+      "id": "antonovka",
+      "name": "Antonovka",
+      "aka": [],
+      "origin": {
+        "country": "Russia",
+        "region": "Kursk",
+        "year": 1800
+      },
+      "parentage": "Chance seedling",
+      "skin": "#c6cf50",
+      "blush": null,
+      "sweetness": 2,
+      "tartness": 5,
+      "crispness": 3,
+      "best_for": [
+        "baking",
+        "storage"
+      ],
+      "season": "Fall",
+      "flavor_text": "A fragrant Russian survivor, fiercely tart and frost-proof.",
+      "notes": "A famous cold-hardy Russian apple, also used as rootstock.",
+      "wiki": null
+    },
+    {
+      "id": "lobo",
+      "name": "Lobo",
+      "aka": [],
+      "origin": {
+        "country": "Canada",
+        "region": "Ottawa, Ontario",
+        "year": 1898
+      },
+      "parentage": "McIntosh seedling",
+      "skin": "#a5232e",
+      "blush": "#6e1420",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 2,
+      "best_for": [
+        "eating",
+        "sauce"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A softer, sweeter Mac for those who like it mellow.",
+      "notes": "A McIntosh seedling raised in Ottawa.",
+      "wiki": null
+    },
+    {
+      "id": "melba",
+      "name": "Melba",
+      "aka": [],
+      "origin": {
+        "country": "Canada",
+        "region": "Ottawa, Ontario",
+        "year": 1898
+      },
+      "parentage": "McIntosh seedling",
+      "skin": "#d05a52",
+      "blush": "#a03028",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 2,
+      "best_for": [
+        "eating",
+        "sauce"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "A tender early Mac heir, best eaten off the tree.",
+      "notes": "An early Canadian McIntosh seedling.",
+      "wiki": null
+    },
+    {
+      "id": "sturmer-pippin",
+      "name": "Sturmer Pippin",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Sturmer, Essex",
+        "year": 1800
+      },
+      "parentage": "Ribston Pippin seedling",
+      "skin": "#8fb03f",
+      "blush": null,
+      "sweetness": 2,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "cider",
+        "storage",
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A late green keeper that sharpens the longer it waits.",
+      "notes": "A very late English apple that stores for months.",
+      "wiki": null
+    },
+    {
+      "id": "lord-lambourne",
+      "name": "Lord Lambourne",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Bedford",
+        "year": 1907
+      },
+      "parentage": "James Grieve \u00d7 Worcester Pearmain",
+      "skin": "#d24048",
+      "blush": "#92202a",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A tidy English dessert apple, aromatic and balanced.",
+      "notes": "A classic English dessert apple.",
+      "wiki": null
+    },
+    {
+      "id": "adams-pearmain",
+      "name": "Adam's Pearmain",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Herefordshire",
+        "year": 1826
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b5764a",
+      "blush": "#8a4a20",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A conical russet with a nutty, pear-like richness.",
+      "notes": "An old English russet dessert apple.",
+      "wiki": null
+    },
+    {
+      "id": "beauty-of-bath",
+      "name": "Beauty of Bath",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Bath",
+        "year": 1864
+      },
+      "parentage": "Chance seedling",
+      "skin": "#d85048",
+      "blush": "#9c2820",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 2,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "One of the first apples of summer, soft and quick to go.",
+      "notes": "A very early English apple, best eaten fresh off the tree.",
+      "wiki": null
+    },
+    {
+      "id": "darcy-spice",
+      "name": "D'Arcy Spice",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Tolleshunt D'Arcy, Essex",
+        "year": 1785
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b0834a",
+      "blush": null,
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A spicy russet that peaks after Christmas in the cellar.",
+      "notes": "An aromatic English russet that improves in storage.",
+      "wiki": null
+    },
+    {
+      "id": "yarlington-mill",
+      "name": "Yarlington Mill",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Somerset",
+        "year": 1898
+      },
+      "parentage": "Chance seedling",
+      "skin": "#b83c34",
+      "blush": "#7c1f1c",
+      "sweetness": 2,
+      "tartness": 2,
+      "crispness": 2,
+      "best_for": [
+        "cider"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A bittersweet cider stalwart from the West Country.",
+      "notes": "A traditional English bittersweet cider apple.",
+      "wiki": null
+    },
+    {
+      "id": "reinette-grise",
+      "name": "Reinette Grise du Canada",
+      "aka": [],
+      "origin": {
+        "country": "France",
+        "region": "France",
+        "year": 1770
+      },
+      "parentage": "Chance seedling",
+      "skin": "#a8814a",
+      "blush": null,
+      "sweetness": 2,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "baking",
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A rugged grey russet, tart and full of old-world character.",
+      "notes": "A large French russet used for cooking and dessert.",
+      "wiki": null
+    },
+    {
+      "id": "api",
+      "name": "Api",
+      "aka": [
+        "Lady Apple"
+      ],
+      "origin": {
+        "country": "France",
+        "region": "France",
+        "year": 1600
+      },
+      "parentage": "Chance seedling",
+      "skin": "#d43a44",
+      "blush": "#9c1e28",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A tiny flat jewel once strung up as festive decoration.",
+      "notes": "An ancient tiny French apple, historically used decoratively.",
+      "wiki": null
+    },
+    {
+      "id": "pinova",
+      "name": "Pinova",
+      "aka": [
+        "Corail"
+      ],
+      "origin": {
+        "country": "Germany",
+        "region": "Dresden",
+        "year": 1986
+      },
+      "parentage": "Clivia \u00d7 Golden Delicious",
+      "skin": "#d8703a",
+      "blush": "#b0401c",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A honeyed German cross with a bright citrus lift.",
+      "notes": "A German dessert apple with a sweet, aromatic flavour.",
+      "wiki": null
+    },
+    {
+      "id": "rubens",
+      "name": "Rubens",
+      "aka": [],
+      "origin": {
+        "country": "Italy",
+        "region": "Emilia-Romagna",
+        "year": 1985
+      },
+      "parentage": "Gala \u00d7 Elstar",
+      "skin": "#d23a42",
+      "blush": "#9c1e26",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "An Italian Gala-Elstar remix, crunchy and bright.",
+      "notes": "An Italian club apple, crisp and sweet-tart.",
+      "wiki": null
+    },
+    {
+      "id": "modi",
+      "name": "Modi",
+      "aka": [],
+      "origin": {
+        "country": "Italy",
+        "region": "Emilia-Romagna",
+        "year": 2000
+      },
+      "parentage": "Liberty \u00d7 Gala",
+      "skin": "#a5232e",
+      "blush": "#6e1420",
+      "sweetness": 4,
+      "tartness": 2,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A glossy scab-proof red that shrugs off browning.",
+      "notes": "A disease-resistant Italian apple, slow to brown.",
+      "wiki": null
+    },
+    {
+      "id": "ariane",
+      "name": "Ariane",
+      "aka": [],
+      "origin": {
+        "country": "France",
+        "region": "Angers",
+        "year": 2002
+      },
+      "parentage": "Disease-resistant INRA selection",
+      "skin": "#c62f3a",
+      "blush": "#8a1a22",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A shiny French scab-fighter bred for low-spray orchards.",
+      "notes": "A disease-resistant French apple bred by INRA.",
+      "wiki": null
+    },
+    {
+      "id": "smitten",
+      "name": "Smitten",
+      "aka": [],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Hawke's Bay",
+        "year": 1994
+      },
+      "parentage": "Gala \u00d7 Braeburn \u00d7 Fuji \u00d7 Falstaff",
+      "skin": "#d0333f",
+      "blush": "#941c26",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 5,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "A supremely crunchy Kiwi newcomer, all snap and sweetness.",
+      "notes": "A New Zealand club apple with a very crisp bite.",
+      "wiki": null
+    },
+    {
+      "id": "koru",
+      "name": "Koru",
+      "aka": [
+        "Plumac"
+      ],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Nelson",
+        "year": 1990
+      },
+      "parentage": "Fuji \u00d7 Braeburn",
+      "skin": "#d43a42",
+      "blush": "#9c1e28",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A honey-and-spice Kiwi cross that resists browning.",
+      "notes": "A New Zealand apple with honeyed, spicy notes.",
+      "wiki": null
+    },
+    {
+      "id": "lemonade",
+      "name": "Lemonade",
+      "aka": [],
+      "origin": {
+        "country": "New Zealand",
+        "region": "Hawke's Bay",
+        "year": 2000
+      },
+      "parentage": "Chance seedling",
+      "skin": "#cdd24a",
+      "blush": null,
+      "sweetness": 4,
+      "tartness": 1,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "A pale sparkling Kiwi apple with a lemon-soda lift.",
+      "notes": "A New Zealand apple known for its sweet, refreshing taste.",
+      "wiki": null
+    },
+    {
+      "id": "bravo",
+      "name": "Bravo",
+      "aka": [],
+      "origin": {
+        "country": "Australia",
+        "region": "Western Australia",
+        "year": 2005
+      },
+      "parentage": "Chance seedling",
+      "skin": "#6e1622",
+      "blush": "#3f0c14",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "An almost-black Aussie stunner, bold and berry-sweet.",
+      "notes": "An Australian apple with a deep, dark maroon skin.",
+      "wiki": null
+    },
+    {
+      "id": "wellant",
+      "name": "Wellant",
+      "aka": [],
+      "origin": {
+        "country": "Netherlands",
+        "region": "Netherlands",
+        "year": 1990
+      },
+      "parentage": "Fresco \u00d7 complex cross",
+      "skin": "#c86a3a",
+      "blush": "#9c3a18",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A honeyed Dutch apple with a hint of russet spice.",
+      "notes": "A Dutch dessert apple with a rich, sweet flavour.",
+      "wiki": null
+    },
+    {
+      "id": "junami",
+      "name": "Junami",
+      "aka": [
+        "Milwa"
+      ],
+      "origin": {
+        "country": "Switzerland",
+        "region": "W\u00e4denswil",
+        "year": 1990
+      },
+      "parentage": "Idared \u00d7 Maigold \u00d7 Elstar",
+      "skin": "#d0343e",
+      "blush": "#941c26",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A firm Swiss trio-cross, juicy and brisk.",
+      "notes": "A Swiss club apple, crisp and sweet-tart.",
+      "wiki": null
+    },
+    {
+      "id": "ozark-gold",
+      "name": "Ozark Gold",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Missouri",
+        "year": 1970
+      },
+      "parentage": "Golden Delicious seedling",
+      "skin": "#e0c84a",
+      "blush": null,
+      "sweetness": 4,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Summer",
+      "flavor_text": "An early gold like a smoother, earlier Golden Delicious.",
+      "notes": "An early-ripening yellow apple from Missouri.",
+      "wiki": null
+    },
+    {
+      "id": "suncrisp",
+      "name": "Suncrisp",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "New Jersey",
+        "year": 1994
+      },
+      "parentage": "Golden Delicious \u00d7 (Cox \u00d7 Cortland)",
+      "skin": "#e0b83f",
+      "blush": "#cf7a2a",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A zippy gold that mellows to honey in the cellar.",
+      "notes": "A New Jersey apple, tart at harvest and sweeter in storage.",
+      "wiki": null
+    },
+    {
+      "id": "karmijn-de-sonnaville",
+      "name": "Karmijn de Sonnaville",
+      "aka": [],
+      "origin": {
+        "country": "Netherlands",
+        "region": "Wageningen",
+        "year": 1949
+      },
+      "parentage": "Cox's Orange Pippin \u00d7 Jonathan",
+      "skin": "#c05a34",
+      "blush": "#92341c",
+      "sweetness": 3,
+      "tartness": 5,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "cider"
+      ],
+      "season": "Fall",
+      "flavor_text": "A powerhouse of sugar and acid with a fizzy complexity.",
+      "notes": "A rich, intense Dutch Cox descendant, high in sugar and acid.",
       "wiki": null
     }
   ]
