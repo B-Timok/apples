@@ -1,8 +1,8 @@
-"""Build step: turn the Python source of truth into docs/apples.json.
+"""Build step: turn the Python source of truth into apples.json.
 
 Run directly (``python build.py``) or via ``serve.py``. The front end never
-touches Python — it just fetches the generated JSON. (The site lives in
-``docs/`` so GitHub Pages can serve it straight from the repo.)
+touches Python — it just fetches the generated JSON. (The site files live at
+the repo root so GitHub Pages serves the app straight from the default branch.)
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 from data.apples import APPLES, validate
 
 ROOT = Path(__file__).parent
-OUT = ROOT / "docs" / "apples.json"
+OUT = ROOT / "apples.json"
 
 
 def build() -> Path:
