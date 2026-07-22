@@ -400,6 +400,21 @@ body {
 
 .notes { margin-top: 16px; padding-top: 14px; border-top: 3px dashed var(--line); color: var(--muted); font-size: 20px; }
 
+.wiki-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 8px 10px;
+  color: var(--cyan);
+  background: var(--bg-2);
+  border: 3px solid var(--line);
+  box-shadow: 2px 2px 0 var(--line);
+  text-decoration: none;
+}
+.wiki-link:hover { background: var(--panel-hi); color: var(--ink); }
+.wiki-link:active { transform: translate(2px, 2px); box-shadow: none; }
+
 .stats-block { margin: 14px 0; }
 
 /* ---- Compare tray -------------------------------------------------------- */

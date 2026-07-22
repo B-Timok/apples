@@ -92,7 +92,7 @@ function drawSprite(canvas, skin, px, blush) {
    Emoji flags don't render on Windows, so we draw tiny 12x8 pixel flags on a
    canvas instead — cross-platform and on-theme. w=white r=red b=blue.
 --------------------------------------------------------------------------- */
-const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93", y: "#f4d02a", k: "#1c1c22" };
+const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93", y: "#f4d02a", k: "#1c1c22", g: "#2f9e44" };
 const FLAGS = {
   "USA": [
     "bbbbbrrrrrrr", "bwbwbwwwwwww", "bbbbbrrrrrrr", "bwbwbwwwwwww",
@@ -149,6 +149,10 @@ const FLAGS = {
   "Czech Republic": [
     "bbwwwwwwwwww", "bbbwwwwwwwww", "bbbbwwwwwwww", "bbbbbwwwwwww",
     "bbbbbrrrrrrr", "bbbbrrrrrrrr", "bbbrrrrrrrrr", "bbrrrrrrrrrr",
+  ],
+  "Italy": [
+    "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr",
+    "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr",
   ],
 };
 
@@ -592,6 +596,14 @@ function openModal(a) {
   notes.className = "notes";
   notes.textContent = a.notes;
   body.appendChild(notes);
+
+  const wiki = document.createElement("a");
+  wiki.className = "wiki-link";
+  wiki.href = a.wiki || `https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(a.name + " apple")}`;
+  wiki.target = "_blank";
+  wiki.rel = "noopener";
+  wiki.textContent = "WIKIPEDIA ↗";
+  body.appendChild(wiki);
 
   drawSprite(canvas, a.skin, 8, a.blush);
   $("#modal").classList.remove("hidden");

@@ -53,7 +53,11 @@ colours, so bad data fails loudly.
 - More cultivars (there are always more heirlooms and cider apples)
 - A print / export view for a favourite list
 
+Each detail card links out to Wikipedia — a direct article when the data
+sets a `wiki` URL, otherwise a name-based Wikipedia search.
+
 Done so far: light/dark theme, bicolour striped sprites, a "surprise me"
 random apple button, pixel-art country flags, a harvest-season filter,
 favourites saved to `localStorage`, a mutable chiptune blip on card open,
-shareable `#slug` links, a two-apple compare view, and a back-to-top button.
+shareable `#slug` links, a two-apple compare view, a back-to-top button,
+and per-apple Wikipedia links.
