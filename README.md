@@ -38,6 +38,10 @@ silhouette and recolours it from each cultivar's `skin` hex — adding a diagona
 highlight, a dark outline, and a glint — so every apple renders as its own
 pixel gem. Adding an apple is just adding data.
 
+Bicolour varieties also set an optional `blush` hex, layered as vertical
+striping on the sun side of the fruit; uniform apples leave it `None` and
+render solid.
+
 ## Add an apple
 
 Append an `Apple(...)` to `APPLES` in `data/apples.py`, then re-run
@@ -47,7 +51,9 @@ colours, so bad data fails loudly.
 ## Ideas for later
 
 - More cultivars (heirlooms, cider apples, regional varieties)
-- Bicolour / striped sprites (store a `blush` colour and blend it in)
 - Filter by origin country or season; a world-map view of origins
-- Chiptune blip on card open; a "random apple" button
+- Chiptune blip on card open
 - Favourites saved to `localStorage`
+
+Done so far: light/dark theme, bicolour striped sprites, a "surprise me"
+random apple button.

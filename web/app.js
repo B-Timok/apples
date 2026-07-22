@@ -30,6 +30,9 @@ const SPRITE = [
 ];
 const GRID = 16;
 const GLINT = new Set(["4,6", "5,6", "4,7"]);
+// Columns that carry the blush overlay — weighted to the right ("sun") side,
+// with gaps so the base colour shows through as vertical striping.
+const BLUSH_COLS = new Set([5, 6, 8, 9, 11, 12, 13]);
 
 function hexToRgb(hex) {
   hex = hex.replace("#", "");
@@ -50,7 +53,7 @@ function cellAt(x, y) {
 }
 function isEmpty(x, y) { return cellAt(x, y) === "."; }
 
-function colorFor(x, y, skin) {
+function colorFor(x, y, skin, blush) {
   const c = cellAt(x, y);
   if (c === ".") return null;
 
@@ -60,15 +63,16 @@ function colorFor(x, y, skin) {
   if (c === "L") return edge ? "#3f6b22" : "#74b83e";          // leaf
 
   // body
-  if (edge) return shade(skin, -0.55);                          // outline
+  if (edge) return shade(skin, -0.55);                          // outline (base hue)
   if (GLINT.has(`${x},${y}`)) return shade(skin, 0.7);          // glint
+  const base = blush && BLUSH_COLS.has(x) ? blush : skin;       // striping
   const lv = (x - 2) / 11 + (y - 4) / 11;                       // 0 = upper-left
-  if (lv < 0.55) return shade(skin, 0.24);                      // highlight
-  if (lv > 1.15) return shade(skin, -0.3);                      // shadow
-  return skin;                                                  // base
+  if (lv < 0.55) return shade(base, 0.24);                      // highlight
+  if (lv > 1.15) return shade(base, -0.3);                      // shadow
+  return base;                                                  // base
 }
 
-function drawSprite(canvas, skin, px) {
+function drawSprite(canvas, skin, px, blush) {
   canvas.width = GRID * px;
   canvas.height = GRID * px;
   const ctx = canvas.getContext("2d");
@@ -76,7 +80,7 @@ function drawSprite(canvas, skin, px) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let y = 0; y < GRID; y++) {
     for (let x = 0; x < GRID; x++) {
-      const col = colorFor(x, y, skin);
+      const col = colorFor(x, y, skin, blush);
       if (!col) continue;
       ctx.fillStyle = col;
       ctx.fillRect(x * px, y * px, px, px);
@@ -128,6 +132,13 @@ function wireControls() {
   $("#modal-close").addEventListener("click", closeModal);
   $("#modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  $("#random").addEventListener("click", () => {
+    // Pick from whatever is currently visible, so filters still apply.
+    const pool = APPLES.filter(matches);
+    const list = pool.length ? pool : APPLES;
+    openModal(list[Math.floor(Math.random() * list.length)]);
+  });
 
   const toggle = $("#theme-toggle");
   const syncGlyph = () =>
@@ -207,7 +218,7 @@ function card(a) {
   el.addEventListener("click", () => openModal(a));
   el.addEventListener("keydown", (e) => { if (e.key === "Enter") openModal(a); });
 
-  drawSprite(canvas, a.skin, 7);
+  drawSprite(canvas, a.skin, 7, a.blush);
   return el;
 }
 
@@ -295,7 +306,7 @@ function openModal(a) {
   notes.textContent = a.notes;
   body.appendChild(notes);
 
-  drawSprite(canvas, a.skin, 8);
+  drawSprite(canvas, a.skin, 8, a.blush);
   $("#modal").classList.remove("hidden");
 }
 

@@ -29,16 +29,19 @@
     <input id="search" class="search" type="text" placeholder="SEARCH APPLES..." autocomplete="off" />
     <div class="filter-row">
       <div class="filter-group" id="use-filters" aria-label="Best for"></div>
-      <label class="sort-wrap">
-        SORT
-        <select id="sort" class="sort">
-          <option value="name">A–Z</option>
-          <option value="sweetness">Sweetest</option>
-          <option value="tartness">Tartest</option>
-          <option value="crispness">Crispest</option>
-          <option value="year">Oldest</option>
-        </select>
-      </label>
+      <div class="right-controls">
+        <button id="random" class="chip" title="Open a random apple">🎲 SURPRISE ME</button>
+        <label class="sort-wrap">
+          SORT
+          <select id="sort" class="sort">
+            <option value="name">A–Z</option>
+            <option value="sweetness">Sweetest</option>
+            <option value="tartness">Tartest</option>
+            <option value="crispness">Crispest</option>
+            <option value="year">Oldest</option>
+          </select>
+        </label>
+      </div>
     </div>
   </section>
 

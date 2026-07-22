@@ -138,6 +138,10 @@ body {
 
 .filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
 
+.right-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+#random.chip { background: var(--panel-hi); color: var(--yellow); }
+#random.chip:hover { background: var(--green); color: var(--line); }
+
 .chip {
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
