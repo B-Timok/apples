@@ -1,6 +1,6 @@
 {
   "generated_by": "build.py",
-  "count": 62,
+  "count": 72,
   "apples": [
     {
       "id": "honeycrisp",
@@ -1531,6 +1531,244 @@
       "season": "Late Fall",
       "flavor_text": "A cozy red with whispers of cinnamon and caramel.",
       "notes": "Grown in Washington; noted for subtle hints of cinnamon and caramel.",
+      "wiki": null
+    },
+    {
+      "id": "tsugaru",
+      "name": "Tsugaru",
+      "aka": [],
+      "origin": {
+        "country": "Japan",
+        "region": "Aomori",
+        "year": 1930
+      },
+      "parentage": "Golden Delicious \u00d7 Ralls Janet",
+      "skin": "#d8b23f",
+      "blush": "#d13b3f",
+      "sweetness": 4,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A juicy Japanese early, honeyed and lightly tart.",
+      "notes": "A popular early-season eating apple in Japan.",
+      "wiki": null
+    },
+    {
+      "id": "orin",
+      "name": "Orin",
+      "aka": [],
+      "origin": {
+        "country": "Japan",
+        "region": "Fukushima",
+        "year": 1952
+      },
+      "parentage": "Golden Delicious \u00d7 Indo",
+      "skin": "#cdd24a",
+      "blush": null,
+      "sweetness": 4,
+      "tartness": 2,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "A fragrant golden with a pineapple-sweet perfume.",
+      "notes": "A sweet, low-acid Japanese yellow apple.",
+      "wiki": null
+    },
+    {
+      "id": "akane",
+      "name": "Akane",
+      "aka": [],
+      "origin": {
+        "country": "Japan",
+        "region": "Morioka",
+        "year": 1937
+      },
+      "parentage": "Jonathan \u00d7 Worcester Pearmain",
+      "skin": "#d33a40",
+      "blush": "#9c1e26",
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "sauce"
+      ],
+      "season": "Early Fall",
+      "flavor_text": "A bright early Jonathan heir, tart and clean.",
+      "notes": "An early Japanese cross, good fresh or cooked into sauce.",
+      "wiki": null
+    },
+    {
+      "id": "rubinette",
+      "name": "Rubinette",
+      "aka": [],
+      "origin": {
+        "country": "Switzerland",
+        "region": "Switzerland",
+        "year": 1966
+      },
+      "parentage": "Golden Delicious \u00d7 Cox's Orange Pippin (reputed)",
+      "skin": "#d8a83a",
+      "blush": "#c83a2a",
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Fall",
+      "flavor_text": "A connoisseur's aromatic \u2014 Cox complexity, Golden sweetness.",
+      "notes": "A Swiss dessert apple prized for intense, complex flavour.",
+      "wiki": null
+    },
+    {
+      "id": "goldrush",
+      "name": "GoldRush",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "West Lafayette, Indiana",
+        "year": 1994
+      },
+      "parentage": "Golden Delicious \u00d7 Co-op 17",
+      "skin": "#e0c542",
+      "blush": null,
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "cider",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A tangy gold that only deepens through months in the cellar.",
+      "notes": "A disease-resistant Purdue apple and a superb long keeper.",
+      "wiki": null
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "aka": [],
+      "origin": {
+        "country": "USA",
+        "region": "Illinois",
+        "year": 1994
+      },
+      "parentage": "Co-op disease-resistant selection",
+      "skin": "#c22f38",
+      "blush": "#8a1a22",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating",
+        "storage"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A glossy disease-proof workhorse \u2014 parent of Cosmic Crisp.",
+      "notes": "A scab-resistant variety and a parent of Cosmic Crisp.",
+      "wiki": null
+    },
+    {
+      "id": "gloster",
+      "name": "Gloster",
+      "aka": [],
+      "origin": {
+        "country": "Germany",
+        "region": "Jork",
+        "year": 1951
+      },
+      "parentage": "Glockenapfel \u00d7 Richared Delicious",
+      "skin": "#a5232b",
+      "blush": "#6e141c",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 4,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A tall dark German drop, glossy and firmly sweet-tart.",
+      "notes": "A German apple with a conical shape and glossy dark-red skin.",
+      "wiki": null
+    },
+    {
+      "id": "chantecler",
+      "name": "Chantecler",
+      "aka": [
+        "Chanteclerc"
+      ],
+      "origin": {
+        "country": "France",
+        "region": "Angers",
+        "year": 1958
+      },
+      "parentage": "Golden Delicious \u00d7 Reinette Clochard",
+      "skin": "#e6c84a",
+      "blush": null,
+      "sweetness": 4,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating",
+        "baking"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A refined French gold, floral and honey-sweet.",
+      "notes": "A French Golden Delicious cross bred by INRA.",
+      "wiki": null
+    },
+    {
+      "id": "calville-blanc",
+      "name": "Calville Blanc d'Hiver",
+      "aka": [],
+      "origin": {
+        "country": "France",
+        "region": "France",
+        "year": 1598
+      },
+      "parentage": "Chance seedling",
+      "skin": "#d7d85e",
+      "blush": null,
+      "sweetness": 3,
+      "tartness": 4,
+      "crispness": 3,
+      "best_for": [
+        "baking",
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A ribbed heirloom of French pastry \u2014 more vitamin C than an orange.",
+      "notes": "A classic French culinary apple, famously high in vitamin C.",
+      "wiki": null
+    },
+    {
+      "id": "laxtons-superb",
+      "name": "Laxton's Superb",
+      "aka": [],
+      "origin": {
+        "country": "England",
+        "region": "Bedford",
+        "year": 1897
+      },
+      "parentage": "Wyken Pippin \u00d7 Cox's Orange Pippin",
+      "skin": "#b13a4a",
+      "blush": "#7c1f30",
+      "sweetness": 3,
+      "tartness": 3,
+      "crispness": 3,
+      "best_for": [
+        "eating"
+      ],
+      "season": "Late Fall",
+      "flavor_text": "A Cox-like English keeper with a dusky violet blush.",
+      "notes": "A late English dessert apple related to Cox's Orange Pippin.",
       "wiki": null
     }
   ]

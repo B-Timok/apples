@@ -154,6 +154,10 @@ const FLAGS = {
     "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr",
     "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr", "ggggwwwwrrrr",
   ],
+  "Switzerland": [
+    "rrrrrrrrrrrr", "rrrrrwwrrrrr", "rrrrrwwrrrrr", "rrrwwwwwwrrr",
+    "rrrwwwwwwrrr", "rrrrrwwrrrrr", "rrrrrwwrrrrr", "rrrrrrrrrrrr",
+  ],
 };
 
 function flagEl(country) {
