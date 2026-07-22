@@ -88,6 +88,69 @@ function drawSprite(canvas, skin, px, blush) {
   }
 }
 
+/* ---- Pixel flags ----------------------------------------------------------
+   Emoji flags don't render on Windows, so we draw tiny 12x8 pixel flags on a
+   canvas instead — cross-platform and on-theme. w=white r=red b=blue.
+--------------------------------------------------------------------------- */
+const FLAG_PAL = { w: "#f5f5f5", r: "#d8352b", b: "#1f3f93" };
+const FLAGS = {
+  "USA": [
+    "bbbbbrrrrrrr", "bwbwbwwwwwww", "bbbbbrrrrrrr", "bwbwbwwwwwww",
+    "rrrrrrrrrrrr", "wwwwwwwwwwww", "rrrrrrrrrrrr", "wwwwwwwwwwww",
+  ],
+  "Japan": [
+    "wwwwwwwwwwww", "wwwwwwwwwwww", "wwwwrrrrwwww", "wwwrrrrrrwww",
+    "wwwrrrrrrwww", "wwwwrrrrwwww", "wwwwwwwwwwww", "wwwwwwwwwwww",
+  ],
+  "England": [
+    "wwwwwrrwwwww", "wwwwwrrwwwww", "wwwwwrrwwwww", "rrrrrrrrrrrr",
+    "rrrrrrrrrrrr", "wwwwwrrwwwww", "wwwwwrrwwwww", "wwwwwrrwwwww",
+  ],
+  "Canada": [
+    "rrrwwwwwwrrr", "rrrwwwwwwrrr", "rrrwwrrwwrrr", "rrrwrrrrwrrr",
+    "rrrwwrrwwrrr", "rrrwwwrwwrrr", "rrrwwwwwwrrr", "rrrwwwwwwrrr",
+  ],
+  "New Zealand": [
+    "wbrbwbbbbbbb", "bwrwbbbbbbbb", "rrrrrbbbbrbb", "bwrwbbbbbbbb",
+    "bbbbbbbbrbrb", "bbbbbbbbbbbb", "bbbbbbbbbrbb", "bbbbbbbbbbbb",
+  ],
+  "Australia": [
+    "wbrbwbbbbbbb", "bwrwbbbbbbbb", "rrrrrbbbbwbb", "bwrwbbbbbbbb",
+    "bbbbbbbbwbwb", "bbwbbbbbbbbb", "bbbbbbbbbwbb", "bbbbbbbbbbbb",
+  ],
+  "France": [
+    "bbbbwwwwrrrr", "bbbbwwwwrrrr", "bbbbwwwwrrrr", "bbbbwwwwrrrr",
+    "bbbbwwwwrrrr", "bbbbwwwwrrrr", "bbbbwwwwrrrr", "bbbbwwwwrrrr",
+  ],
+  "Netherlands": [
+    "rrrrrrrrrrrr", "rrrrrrrrrrrr", "rrrrrrrrrrrr", "wwwwwwwwwwww",
+    "wwwwwwwwwwww", "bbbbbbbbbbbb", "bbbbbbbbbbbb", "bbbbbbbbbbbb",
+  ],
+  "Denmark": [
+    "rrrwwrrrrrrr", "rrrwwrrrrrrr", "rrrwwrrrrrrr", "wwwwwwwwwwww",
+    "wwwwwwwwwwww", "rrrwwrrrrrrr", "rrrwwrrrrrrr", "rrrwwrrrrrrr",
+  ],
+};
+
+function flagEl(country) {
+  const rows = FLAGS[country];
+  if (!rows) return null;
+  const px = 2;
+  const canvas = document.createElement("canvas");
+  canvas.className = "flag";
+  canvas.width = rows[0].length * px;
+  canvas.height = rows.length * px;
+  const ctx = canvas.getContext("2d");
+  ctx.imageSmoothingEnabled = false;
+  rows.forEach((row, y) => {
+    for (let x = 0; x < row.length; x++) {
+      ctx.fillStyle = FLAG_PAL[row[x]];
+      ctx.fillRect(x * px, y * px, px, px);
+    }
+  });
+  return canvas;
+}
+
 /* ---- State + data -------------------------------------------------------- */
 const USES = ["eating", "baking", "cider", "sauce", "salad", "storage"];
 let APPLES = [];
@@ -193,6 +256,7 @@ function card(a) {
   el.tabIndex = 0;
 
   const canvas = document.createElement("canvas");
+  canvas.className = "sprite";
   el.appendChild(canvas);
 
   const name = document.createElement("div");
@@ -202,7 +266,9 @@ function card(a) {
 
   const origin = document.createElement("div");
   origin.className = "card-origin";
-  origin.textContent = `${flag(a.origin.country)} ${a.origin.country} · ${a.origin.year}`;
+  const fe = flagEl(a.origin.country);
+  if (fe) origin.appendChild(fe);
+  origin.appendChild(document.createTextNode(` ${a.origin.country} · ${a.origin.year}`));
   el.appendChild(origin);
 
   const tags = document.createElement("div");
@@ -240,13 +306,6 @@ function meter(label, value, cls) {
   return row;
 }
 
-function flag(country) {
-  return {
-    "USA": "🇺🇸", "Japan": "🇯🇵", "New Zealand": "🇳🇿", "Australia": "🇦🇺",
-    "England": "🏴", "Canada": "🇨🇦",
-  }[country] || "🍎";
-}
-
 /* ---- Modal --------------------------------------------------------------- */
 function openModal(a) {
   const body = $("#modal-body");
@@ -275,7 +334,17 @@ function openModal(a) {
   stats.appendChild(meter("CRISP", a.crispness, "crisp"));
   body.appendChild(stats);
 
-  body.appendChild(field("ORIGIN", `${flag(a.origin.country)} ${a.origin.region}, ${a.origin.country} — ${a.origin.year}`));
+  const originRow = document.createElement("div");
+  originRow.className = "field-row";
+  originRow.innerHTML = `<span class="field-key">ORIGIN</span>`;
+  const originVal = document.createElement("span");
+  originVal.className = "field-val";
+  const mfe = flagEl(a.origin.country);
+  if (mfe) originVal.append(mfe, document.createTextNode(" "));
+  originVal.append(document.createTextNode(`${a.origin.region}, ${a.origin.country} — ${a.origin.year}`));
+  originRow.appendChild(originVal);
+  body.appendChild(originRow);
+
   body.appendChild(field("PARENTAGE", a.parentage));
 
   const seasonRow = document.createElement("div");

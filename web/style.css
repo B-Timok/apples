@@ -208,7 +208,7 @@ body {
 .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--line); background: var(--panel-hi); }
 .card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
 
-.card canvas { width: 112px; height: 112px; image-rendering: pixelated; }
+.card canvas.sprite { width: 112px; height: 112px; image-rendering: pixelated; }
 
 .card-name {
   font-family: 'Press Start 2P', monospace;
@@ -223,6 +223,15 @@ body {
 }
 
 .card-origin { color: var(--muted); font-size: 19px; }
+
+.flag {
+  height: 16px;
+  width: auto;
+  image-rendering: pixelated;
+  border: 2px solid var(--line);
+  vertical-align: -3px;
+  margin-right: 2px;
+}
 
 .card-tags { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
 
